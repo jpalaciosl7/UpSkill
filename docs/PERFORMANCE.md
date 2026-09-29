@@ -13,6 +13,14 @@ la fluidez de la demo, no en escala.
 | Noto Sans (4 pesos × subsets) | ~45–85 kB por archivo | solo se descargan los subsets que usa la página |
 | Arte espacial (`src/assets/espacial/*.webp`) | 1.6–34 kB c/u | ya optimizado en webp |
 
+## Fondo espacial (tema espacial)
+
+`src/components/espacio/`: 3 capas de estrellas (140 + 70 + 30 estrellas),
+cada una **un solo elemento** con `box-shadow`, más nebulosa y viñeta con
+gradientes. Solo se animan `transform` y `opacity` (GPU). Costo medido en el
+build: **+1.95 kB de JS** y +1.7 kB de CSS; sin imágenes nuevas. Con "reducir
+movimiento" queda quieto. En Covalto no se monta.
+
 ## Puntos sensibles
 
 - **Fuente de íconos (~4 MB):** es el principal costo de primera carga. Si hace

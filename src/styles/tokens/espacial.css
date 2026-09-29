@@ -48,6 +48,12 @@
   --gradient-titular: linear-gradient(90deg, #7dd3fc 0%, #a78bfa 55%, #d8b4fe 100%);
   --glow-primario: 0 0 24px rgba(167, 139, 250, 0.45);
 
+  /* Fondo de espacio exterior (src/components/espacio/) */
+  --nebulosa-violeta: rgba(139, 108, 255, 0.3);
+  --nebulosa-azul: rgba(56, 189, 248, 0.14);
+  --nebulosa-lila: rgba(192, 132, 252, 0.18);
+  --espacio-vineta: rgba(0, 0, 0, 0.6);
+
   /* Forma y sombra */
   --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45);
   --shadow-card-hover: 0 12px 40px rgba(88, 60, 200, 0.35);

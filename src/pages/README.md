@@ -6,7 +6,7 @@ contexto de una acción antes de despacharla.
 
 | Página | Ruta | Nota |
 |---|---|---|
-| `LandingPage` | `/` | hero inmersivo, sin Header/HUD |
+| `LandingPage/` | `/` | hero inmersivo, sin Header/HUD; carpeta con encabezado, texto, acciones e ilustración (ver su README) |
 | `MapPage` | `/mapa` | mapa de trayectoria |
 | `LevelDetailPage` | `/nivel/:levelId` | decide si el módulo cierra el nivel y arma `completaNivel` (`NIVEL_MAXIMO = 6`) |
 | `PassportPage` | `/pasaporte` | envuelve `ExplorerPassport` |

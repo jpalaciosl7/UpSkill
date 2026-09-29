@@ -4,4 +4,5 @@
  */
 export { ThemeProvider } from './ThemeProvider'
 export { useTheme } from './useTheme'
+export { SoloEnTema } from './SoloEnTema'
 export { TEMAS, TEMA_POR_DEFECTO, temaSiguiente, type Tema } from './tipos'

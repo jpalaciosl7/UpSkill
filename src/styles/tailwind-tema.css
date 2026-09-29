@@ -3,7 +3,12 @@
  * utilidades de Tailwind v4 (bg-primary, text-danger, border-border-strong,
  * rounded-card…). `inline` hace que la utilidad lea la variable en tiempo de
  * ejecución, así cambia sola al alternar el tema.
+ *
+ * Variante `espacial:` — aplica una utilidad solo en el tema espacial
+ * (p. ej. `espacial:lg:flex-row`), sin lógica de tema en los componentes.
  */
+@custom-variant espacial (&:where([data-theme='espacial'], [data-theme='espacial'] *));
+
 @theme inline {
   --font-sans: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;
 

@@ -18,7 +18,18 @@ La decisión de marca sigue abierta ([`docs/PRODUCT_SPEC.md`](../../docs/PRODUCT
 | `contextoTema.ts` | `ContextoTema` y su tipo `ValorContextoTema` |
 | `ThemeProvider.tsx` | Estado del tema: lo lee, lo aplica y lo guarda en cada cambio |
 | `useTheme.ts` | Hook para leer/cambiar el tema (lanza fuera del Provider) |
-| `index.ts` | API pública: `ThemeProvider`, `useTheme`, `Tema`, `TEMAS`, `TEMA_POR_DEFECTO`, `temaSiguiente` |
+| `SoloEnTema.tsx` | `<SoloEnTema tema="espacial">…</SoloEnTema>`: contenido que solo existe en un tema |
+| `index.ts` | API pública: `ThemeProvider`, `useTheme`, `SoloEnTema`, `Tema`, `TEMAS`, `TEMA_POR_DEFECTO`, `temaSiguiente` |
+
+## Cómo varía la UI por tema (sin ternarios repartidos)
+
+1. **Colores:** tokens CSS (`src/styles/tokens/`) — el componente no sabe del tema.
+2. **Estilos que cambian de layout:** variante de Tailwind `espacial:`
+   (`espacial:lg:flex-row`), declarada en `src/styles/tailwind-tema.css`.
+3. **Contenido que solo existe en un tema** (ilustraciones, fondo espacial):
+   `<SoloEnTema>`.
+
+`tema === '…'` solo debe aparecer dentro de esta carpeta.
 | `almacenamiento.test.ts` | Pruebas del almacenamiento y del dominio |
 
 Fuera de esta carpeta se importa **solo** desde `@/theme`.
