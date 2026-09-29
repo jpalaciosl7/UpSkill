@@ -4,7 +4,7 @@
  * duplicaba en cada rama).
  */
 import { Icon } from '@/components/ui/Icon'
-import type { EstadoNodo } from '../estadoNodo'
+import type { EstadoNodo } from './estadoNodo'
 
 /**
  * Insignia del estado; no pinta nada para "bloqueado" (el candado va dentro del nodo).

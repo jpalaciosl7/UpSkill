@@ -53,6 +53,7 @@ Regla: **prueba co-ubicada** `<archivo>.test.ts` junto al archivo fuente.
 | `src/theme/tipos.ts`, `src/theme/almacenamiento.ts` | `src/theme/almacenamiento.test.ts` |
 | `src/components/ranking/LeaderboardTable/construirFilas.ts` | `src/components/ranking/LeaderboardTable/construirFilas.test.ts` |
 | `src/components/map/estadoNodo.ts` | `src/components/map/estadoNodo.test.ts` |
+| `src/components/map/orbita/geometriaOrbita.ts`, `estadoOrbita.ts` | `src/components/map/orbita/geometriaOrbita.test.ts` (geometría + navegación) |
 | `src/components/espacio/generarEstrellas.ts`, `sombrasEstrellas.ts` | `src/components/espacio/generarEstrellas.test.ts` |
 | `src/components/ranking/nombreRanking.ts` | `src/components/ranking/nombreRanking.test.ts` |
 | `src/components/**`, `src/pages/**` (resto) | sin pruebas de UI: `pnpm typecheck` + `pnpm lint` + revisión manual en `pnpm dev` |

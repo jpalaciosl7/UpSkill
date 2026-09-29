@@ -8,7 +8,7 @@ que la usa.
 | `layout/` | `AppLayout` (fondo del tema + Header + HUD + Outlet), `Header` (navegación, reiniciar progreso, cuenta), `ThemeToggle` (nombre e ícono desde `PRESENTACION_TEMA`) | todas menos la landing |
 | `espacio/` | `FondoEspacial` (estrellas en capas + nebulosa; solo tema espacial — ver su README) | todas en Espacial |
 | `hud/` | `PersistentHUD` — monedas · nivel/rango · barra XP · racha vigente (`rachaVigente` de `@/state/racha`) | HUD persistente |
-| `map/` | `estadoNodo.ts` (regla bloqueado/activo/completado, compartida); `lineal/` (mapa de Covalto: `TrajectoryMap`, `PlanetNode`, nodos e insignia — ver su README) | Mapa |
+| `map/` | `estadoNodo.ts` e `InsigniaEstado.tsx` (compartidos); `lineal/` (mapa de Covalto) y `orbita/` (órbita 3D giratoria del tema espacial) — ver sus README | Mapa |
 | `level/` | `ModuleCard` (XP, tipo, completar) | Detalle de nivel |
 | `passport/` | `ExplorerPassport/` (carpeta: perfil, avatar por tema, sellos, estadísticas — ver su README), `MissionStamp` | Pasaporte |
 | `evaluation/` | `PlacementQuiz` (D1–D5 → rango y nivel sugerido) | Autoevaluación |

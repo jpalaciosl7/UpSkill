@@ -74,6 +74,15 @@ Reglas de dependencia (se respetan hoy y hay que mantenerlas):
 - Sin `VITE_SUPABASE_*`, `isSupabaseConfigured = false` y todo corre en modo
   local.
 
+## Mapa por tema
+
+`MapPage` elige con `<SoloEnTema>`: en Covalto la trayectoria lineal
+(`src/components/map/lineal/`); en Espacial la órbita 3D
+(`src/components/map/orbita/`), CSS 3D puro (`perspective` + `preserve-3d`):
+el anillo gira con una transición y cada planeta contrarrota para mirar a la
+cámara. La regla de estado de cada nivel (`map/estadoNodo.ts`) es común a
+ambos.
+
 ## Datos mock
 
 `src/data/*.json`, tipados en `src/data/types.ts`:

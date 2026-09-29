@@ -6,7 +6,7 @@
 import { Icon } from '@/components/ui/Icon'
 import { ICONO_POR_NIVEL } from '@/data/levelIcons'
 import type { EstadoNodo } from '../estadoNodo'
-import { InsigniaEstado } from './InsigniaEstado'
+import { InsigniaEstado } from '../InsigniaEstado'
 
 /** Relleno y color del ícono por estado */
 const ESTILO_POR_ESTADO: Record<EstadoNodo, string> = {

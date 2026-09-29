@@ -5,7 +5,7 @@
 import { Icon } from '@/components/ui/Icon'
 import { PLANETA_POR_NIVEL } from '@/assets/espacial'
 import type { EstadoNodo } from '../estadoNodo'
-import { InsigniaEstado } from './InsigniaEstado'
+import { InsigniaEstado } from '../InsigniaEstado'
 
 /**
  * Planeta ilustrado del nivel.

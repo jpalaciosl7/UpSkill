@@ -9,7 +9,7 @@ empresarial; en Espacial se usa la órbita 3D (`../orbita/`).
 | `PlanetNode.tsx` | Un nivel: nodo + nombre + pilar AAA+; clic → `/nivel/:id` salvo bloqueado |
 | `IconoNivel.tsx` | Nodo Covalto: círculo con ícono o candado, contorno `border-strong` (≥ 3:1) |
 | `PlanetaIlustrado.tsx` | Nodo con el planeta del arte (si este mapa se muestra en Espacial) |
-| `InsigniaEstado.tsx` | Insignia "en curso" / "completado" (una sola, sin duplicar) |
+| `../InsigniaEstado.tsx` | Insignia "en curso" / "completado", compartida con la órbita |
 | `index.ts` | API pública (`TrajectoryMap`) |
 
 **Pruebas:** la regla de estado se prueba en `../estadoNodo.test.ts`; la vista,

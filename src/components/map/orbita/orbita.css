@@ -1,0 +1,57 @@
+/*
+ * orbita.css — escena 3D de la órbita. El anillo gira con rotateY y cada
+ * planeta contrarrota lo mismo (misma transición) para mirar siempre a la
+ * cámara. `perspective` da la profundidad; el navegador ordena quién tapa a
+ * quién. Solo transform/opacity/filter animados; quieto con reduced-motion.
+ */
+.orbita-escena {
+  --radio-orbita: clamp(120px, 30vw, 290px);
+  --inclinacion: -14deg;
+  --transicion-orbita: 900ms cubic-bezier(0.22, 0.8, 0.26, 1);
+  position: relative;
+  height: clamp(300px, 46vw, 440px);
+  perspective: 1100px;
+}
+
+/* Anillo: punto central que se inclina y gira */
+.orbita-anillo {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--inclinacion)) rotateY(var(--rotacion));
+  transition: transform var(--transicion-orbita);
+}
+
+/* Trayectoria: círculo punteado acostado en el plano del anillo */
+.orbita-trayectoria {
+  position: absolute;
+  width: calc(var(--radio-orbita) * 2);
+  height: calc(var(--radio-orbita) * 2);
+  left: calc(var(--radio-orbita) * -1);
+  top: calc(var(--radio-orbita) * -1);
+  border: 2px dashed var(--color-border-strong);
+  border-radius: 9999px;
+  opacity: 0.55;
+  transform: rotateX(90deg);
+}
+
+/* Planeta: se coloca en el anillo y contrarrota para mirar a la cámara */
+.orbita-planeta {
+  position: absolute;
+  left: -3.5rem;
+  top: -3.5rem;
+  width: 7rem;
+  transform-style: preserve-3d;
+  transform: rotateY(var(--angulo)) translateZ(var(--radio-orbita))
+    rotateY(calc(-1 * (var(--angulo) + var(--rotacion)))) rotateX(calc(-1 * var(--inclinacion)));
+  transition:
+    transform var(--transicion-orbita),
+    opacity var(--transicion-orbita),
+    filter var(--transicion-orbita);
+}
+
+/* Brillo del planeta enfocado */
+.orbita-planeta-enfocado .orbita-cuerpo {
+  box-shadow: var(--glow-primario), var(--shadow-card);
+}

@@ -1,4 +1,6 @@
 import { TrajectoryMap } from '@/components/map/lineal'
+import { OrbitaPlanetas } from '@/components/map/orbita'
+import { SoloEnTema } from '@/theme'
 import { Icon } from '@/components/ui/Icon'
 import { getLevels } from '@/data/dataService'
 import { useExplorer } from '@/state/explorerContext'
@@ -27,7 +29,10 @@ export function MapPage() {
         </p>
       </div>
 
-      <TrajectoryMap />
+      {/* Espacial: órbita 3D giratoria · Covalto: trayectoria lineal */}
+      <SoloEnTema tema="espacial" enOtroTema={<TrajectoryMap />}>
+        <OrbitaPlanetas />
+      </SoloEnTema>
 
       <div className="flex flex-wrap items-center gap-4 rounded-card bg-surface-beige px-4 py-3 text-sm text-text-muted">
         <Icon name="info" className="text-[18px]" />
