@@ -39,7 +39,7 @@ Requisito: Node.js 20+ (verificado con Node 24.21).
 | Todo | full | `pnpm lint && pnpm test && pnpm build` |
 
 Estado verificado el 2026-09-28: lint 0 errores / 4 warnings conocidos;
-17 pruebas en verde; build OK.
+35 pruebas en verde (4 archivos); build OK.
 
 ## Base de datos
 

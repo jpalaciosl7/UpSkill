@@ -11,8 +11,9 @@ description: Audita secretos, PII, RLS y exposición de datos del prototipo seg�
   ningún archivo contiene URLs/keys reales de Supabase; nunca `service_role`.
 - **PII:** mocks (`src/data/*.json`), pruebas y docs sin nombres/correos
   reales.
-- **Exposición:** el Ranking muestra alias; hallazgo conocido: cae a `nombre`
-  si no hay alias (`LeaderboardTable`).
+- **Exposición:** el Ranking muestra solo alias o "Explorador anónimo"
+  (`nombreRanking.ts`) y su consulta pide solo `id, alias, xp_total, rango`;
+  vigila que ningún listado de otros usuarios vuelva a usar `select('*')`.
 - **BD:** RLS permisiva conocida (demo). Cualquier propuesta de datos reales
   de producción requiere Supabase Auth + RLS por usuario.
 - **Red:** sin llamadas nuevas en runtime aparte de Supabase.
