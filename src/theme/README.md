@@ -18,8 +18,9 @@ La decisión de marca sigue abierta ([`docs/PRODUCT_SPEC.md`](../../docs/PRODUCT
 | `contextoTema.ts` | `ContextoTema` y su tipo `ValorContextoTema` |
 | `ThemeProvider.tsx` | Estado del tema: lo lee, lo aplica y lo guarda en cada cambio |
 | `useTheme.ts` | Hook para leer/cambiar el tema (lanza fuera del Provider) |
+| `presentacionTema.ts` | `PRESENTACION_TEMA`: nombre e ícono de cada tema (botón del header) |
 | `SoloEnTema.tsx` | `<SoloEnTema tema="espacial">…</SoloEnTema>`: contenido que solo existe en un tema |
-| `index.ts` | API pública: `ThemeProvider`, `useTheme`, `SoloEnTema`, `Tema`, `TEMAS`, `TEMA_POR_DEFECTO`, `temaSiguiente` |
+| `index.ts` | API pública: `ThemeProvider`, `useTheme`, `SoloEnTema`, `PRESENTACION_TEMA`, `Tema`, `TEMAS`, `TEMA_POR_DEFECTO`, `temaSiguiente` |
 
 ## Cómo varía la UI por tema (sin ternarios repartidos)
 

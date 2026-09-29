@@ -1,4 +1,4 @@
-import { TrajectoryMap } from '@/components/map/TrajectoryMap'
+import { TrajectoryMap } from '@/components/map/lineal'
 import { Icon } from '@/components/ui/Icon'
 import { getLevels } from '@/data/dataService'
 import { useExplorer } from '@/state/explorerContext'

@@ -52,6 +52,8 @@ Regla: **prueba co-ubicada** `<archivo>.test.ts` junto al archivo fuente.
 | `src/styles/tokens/*.css`, `src/styles/contraste/*` | `src/styles/contraste/contraste.test.ts` (contraste WCAG de ambos temas) |
 | `src/theme/tipos.ts`, `src/theme/almacenamiento.ts` | `src/theme/almacenamiento.test.ts` |
 | `src/components/ranking/LeaderboardTable/construirFilas.ts` | `src/components/ranking/LeaderboardTable/construirFilas.test.ts` |
+| `src/components/map/estadoNodo.ts` | `src/components/map/estadoNodo.test.ts` |
+| `src/components/espacio/generarEstrellas.ts`, `sombrasEstrellas.ts` | `src/components/espacio/generarEstrellas.test.ts` |
 | `src/components/ranking/nombreRanking.ts` | `src/components/ranking/nombreRanking.test.ts` |
 | `src/components/**`, `src/pages/**` (resto) | sin pruebas de UI: `pnpm typecheck` + `pnpm lint` + revisión manual en `pnpm dev` |
 | `src/styles/index.css`, `src/theme/**`, `src/assets/**` | revisión visual en **ambos temas** |
@@ -69,6 +71,10 @@ corre la suite completa.
   pruebas automáticas;
 - CSS/tokens y arte;
 - el comportamiento de Supabase (RLS, checks SQL).
+
+**Qué NO entra en la suite:** `tmp/` y `.dwp/` están excluidos en
+`vite.config.ts` (`test.exclude`): son áreas locales que pueden traer repos o
+scripts ajenos con sus propias pruebas.
 
 **Escalamiento a suite completa** (siempre `pnpm test && pnpm build`):
 cambios a `package.json`, `pnpm-lock.yaml`, `vite.config.ts`,
