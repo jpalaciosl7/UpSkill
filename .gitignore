@@ -31,3 +31,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Deep Work Plan (DWP) — salida de planes y scratch de agentes
+.dwp/
+tmp/*
+!tmp/.gitkeep
+
+# Junctions locales .claude/.cursor -> .agents (Windows sin symlinks; ver .agents/README.md).
+# .agents/ es la fuente canónica versionada.
+/.claude
+/.cursor
+.agents/settings.local.json

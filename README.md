@@ -12,21 +12,29 @@ monetarias.**
 > Sigue funcionando sin él: si no hay una BD conectada, todo cae de vuelta
 > al modo local/demo tal como arrancó el prototipo.
 
-Ver `CLAUDE.md` para las instrucciones de build completas y
+Ver `AGENTS.md` (índice + reglas para agentes), `docs/PRODUCT_SPEC.md`
+(alcance y decisiones del prototipo) y
 `docs/Covalto3_Ruta_Formacion_Documento_Base.md` para el contenido ancla.
 
 ## Requisitos
 
 - Node.js 20+
+- pnpm (versión fijada en `package.json` → `packageManager`). Si no lo tienes
+  instalado, antepone `corepack` a cada comando (`corepack pnpm install`).
 
 ## Desarrollo
 
 ```bash
-npm install
-npm run dev      # http://localhost:5173
-npm run build    # build de producción en dist/
-npm run preview  # sirve el build de producción localmente
+pnpm install
+pnpm dev         # http://localhost:5173
+pnpm test        # pruebas (Vitest)
+pnpm lint        # oxlint
+pnpm build       # typecheck + build de producción en dist/
+pnpm preview     # sirve el build de producción localmente
 ```
+
+Referencia completa de comandos en `docs/DEVELOPMENT_COMMANDS.md`; guía para
+agentes de IA en `AGENTS.md`.
 
 ## Stack
 
@@ -73,7 +81,7 @@ completo en `supabase/migrations/0001_usuarios.sql`.
    ```bash
    cp .env.example .env.local
    ```
-5. `npm run dev` — ya deberías poder identificarte desde **Cuenta** en el
+5. `pnpm dev` — ya deberías poder identificarte desde **Cuenta** en el
    header.
 6. Para producción (Vercel): agrega las mismas dos variables en
    *Project Settings → Environment Variables* y vuelve a desplegar.
