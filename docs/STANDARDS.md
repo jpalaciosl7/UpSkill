@@ -75,11 +75,11 @@ cambio. El código nuevo nace cumpliendo.
 
 ## Ramas y commits (regla del owner, 2026-09-29)
 
-**Ramas.** La principal (`claude/covalto-gamification-prototype-3drw55`) no
+**Ramas.** La principal (`main`) no
 recibe commits directos. Cada trabajo nuevo:
 
 ```bash
-git switch claude/covalto-gamification-prototype-3drw55
+git switch main
 git switch -c feature/login-codigo-otp      # prefijo = tipo de trabajo
 ```
 

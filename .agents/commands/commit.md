@@ -5,7 +5,7 @@ description: Crea un commit convencional en español con los cambios actuales, e
 # /commit
 
 1. **Rama:** si la rama actual es la principal
-   (`claude/covalto-gamification-prototype-3drw55`), **no** hagas commit ahí:
+   (`main`), **no** hagas commit ahí:
    crea una rama de trabajo con el prefijo del tipo (`feature/`, `fix/`,
    `hotfix/`, `refactor/`, `docs/`, `chore/` + objetivo en kebab-case) y sigue
    en ella. Ver `AGENTS.md` regla 2.

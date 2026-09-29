@@ -92,7 +92,7 @@ UpSkill/
    técnicos de librerías se quedan como son.
 2. **Ramas y commits (regla del owner, 2026-09-29) — no negociable:**
    - **Nunca se trabaja directo en la rama principal**
-     (`claude/covalto-gamification-prototype-3drw55`). Todo trabajo nuevo va
+     (`main`, desde 2026-09-29). Todo trabajo nuevo va
      en una rama aparte creada desde la principal, con el prefijo de su tipo:
      `feature/<qué>`, `fix/<qué>`, `hotfix/<qué>`, `refactor/<qué>`,
      `docs/<qué>`, `chore/<qué>` (kebab-case, en español:
