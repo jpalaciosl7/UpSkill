@@ -27,6 +27,24 @@ la fluidez de la demo, no en escala.
   `usuarios_xp_total_idx`; mantén el `limit`.
 - **Datos mock:** los JSON se importan en el bundle (~15 kB); sin costo de red.
 
+## Pendientes (TODO — por validar)
+
+- **TODO(perf) · Fuente de íconos Material Symbols (~3.96 MB).** *Registrado el
+  2026-09-28; **no implementado** por decisión del owner — se valida después.*
+  - **Problema:** `@import 'material-symbols/outlined.css'` en
+    `src/styles/index.css` empaqueta la fuente variable completa
+    (`material-symbols-outlined-*.woff2` ≈ 3,964 kB en `pnpm build`), aunque la
+    app usa unas pocas decenas de íconos.
+  - **Opciones a evaluar:** (1) subset de la fuente a los íconos realmente
+    usados (lista obtenible buscando `<Icon name="…">` y los `icono=` en
+    `src/`); (2) reemplazar la fuente por SVGs inline por ícono dentro de
+    `src/components/ui/Icon.tsx`.
+  - **Restricción:** cualquier opción debe seguir **auto-hospedada** (sin CDN,
+    guardrail §9) y mantener el componente `<Icon name="…" />` como única API.
+  - **Criterio de validación:** el asset de íconos baja de forma significativa
+    en la salida de `pnpm build`, todos los íconos se siguen viendo en ambos
+    temas y `pnpm lint && pnpm test && pnpm build` queda en verde.
+
 ## Presupuestos sugeridos
 
 - No crecer el JS principal más de ~20% sin justificación (p. ej. no agregar

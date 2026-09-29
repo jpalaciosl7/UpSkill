@@ -10,6 +10,8 @@
 @import '@fontsource/noto-sans/500.css';
 @import '@fontsource/noto-sans/600.css';
 @import '@fontsource/noto-sans/700.css';
+/* TODO(perf): esta fuente pesa ~3.96 MB en el build; optimización pendiente de
+   validar (subset o SVG inline, siempre auto-hospedado) — ver docs/PERFORMANCE.md */
 @import 'material-symbols/outlined.css';
 
 /* ============================================================
