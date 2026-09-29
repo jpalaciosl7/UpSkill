@@ -1,0 +1,23 @@
+/*
+ * base.css — estilos de documento: alto mínimo, fondo y texto del tema
+ * activo y la transición suave al alternar tema.
+ *
+ * La transición se limita al body (antes era `* { transition }`, que animaba
+ * todos los elementos y costaba rendimiento). Los componentes que necesitan
+ * transición usan la utilidad `transition` de Tailwind.
+ */
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}

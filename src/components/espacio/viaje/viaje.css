@@ -1,0 +1,57 @@
+/*
+ * viaje.css — "viaje" entre planetas (tema espacial) con la View Transitions
+ * API: el planeta enfocado en la órbita y el planeta protagonista del nivel
+ * comparten `view-transition-name`, así el navegador lo "acerca" de un lugar
+ * a otro; el resto de la página hace un leve acercamiento. Sin soporte del
+ * navegador, el cambio es directo (React Router lo resuelve).
+ */
+.viaje-planeta {
+  view-transition-name: planeta-viaje;
+}
+
+::view-transition-group(planeta-viaje) {
+  animation-duration: 650ms;
+  animation-timing-function: cubic-bezier(0.22, 0.8, 0.26, 1);
+}
+
+::view-transition-old(root) {
+  animation: 280ms ease-in both viaje-alejar;
+}
+
+::view-transition-new(root) {
+  animation: 520ms ease-out both viaje-acercar;
+}
+
+@keyframes viaje-alejar {
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+@keyframes viaje-acercar {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+}
+
+/* Planeta protagonista: giro lento sobre sí mismo */
+.viaje-giro {
+  animation: viaje-rotar 60s linear infinite;
+}
+
+@keyframes viaje-rotar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* "Reducir movimiento": sin animaciones de transición (el * global no las alcanza) */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

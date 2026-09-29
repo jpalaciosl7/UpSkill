@@ -1,0 +1,63 @@
+/*
+ * tokens/covalto.css — tema empresarial (por defecto): sistema de marca
+ * Covalto. También aplica sin data-theme (:root), para que la app nunca
+ * quede sin colores. Contraste verificado por src/styles/contraste.test.ts.
+ */
+:root,
+:root[data-theme='covalto'] {
+  /* Paleta de marca */
+  --color-primary: #062323; /* verde primario */
+  --color-primary-2: #0c3634; /* verde-2 */
+  --color-primary-3: #134c48; /* verde-3 */
+  --color-accent: #ffba1f; /* ámbar: fondos de botones/chips, nunca texto sobre claro */
+  --color-mint: #84c28b; /* verde menta */
+
+  /* Superficies */
+  --color-bg: #f9f8f7; /* off-white */
+  --color-surface: #ffffff;
+  --color-surface-mint: #f0fdf1;
+  --color-surface-beige: #f5efe4;
+
+  /* Texto */
+  --color-text: #0c3634;
+  --color-text-muted: #4b6461;
+  --color-text-on-primary: #f9f8f7;
+  --color-text-on-dark: #f9f8f7; /* sobre el degradado oscuro del hero (ambos temas) */
+  --color-text-on-accent: #062323; /* sobre ámbar (no cambia entre temas) */
+  --color-accent-text: #8a5a00; /* ámbar legible como texto/ícono sobre claro */
+  --color-danger: #b42318; /* errores */
+
+  /* Bordes */
+  --color-border: #e4e7e2; /* separadores decorativos */
+  --color-border-strong: #7d8c88; /* bordes que delimitan: inputs, nodos (≥ 3:1) */
+
+  /* Estados de nodo del mapa de trayectoria */
+  --color-node-locked: #d7d3c9;
+  --color-node-active: var(--color-accent);
+  --color-node-done: #3d8b55;
+
+  /* Medallas del ranking (íconos, ≥ 3:1 sobre la tarjeta) */
+  --color-medalla-oro: #a16800;
+  --color-medalla-plata: #6b7280;
+  --color-medalla-bronce: #9a4f1f;
+
+  /* Sellos del pasaporte: en Covalto todos en ámbar de marca */
+  --color-sello-1: var(--color-accent);
+  --color-sello-2: var(--color-accent);
+  --color-sello-3: var(--color-accent);
+  --color-sello-4: var(--color-accent);
+  --color-sello-5: var(--color-accent);
+  --color-sello-6: var(--color-accent);
+
+  /* Degradados del hero */
+  --gradient-hero: linear-gradient(135deg, #062323 0%, #134c48 55%, #0c3634 100%);
+  --gradient-space-accent: radial-gradient(circle at 30% 20%, rgba(132, 194, 139, 0.25), transparent 60%);
+  /* Efectos de campaña: en Covalto son neutros (titular en color sólido, sin brillo) */
+  --gradient-titular: linear-gradient(90deg, currentColor, currentColor);
+  --glow-primario: none;
+
+  /* Forma y sombra */
+  --shadow-card: 0 4px 16px rgba(6, 35, 35, 0.08);
+  --shadow-card-hover: 0 8px 24px rgba(6, 35, 35, 0.14);
+  --radius-card: 1.25rem;
+}

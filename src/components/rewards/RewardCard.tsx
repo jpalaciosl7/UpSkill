@@ -39,7 +39,7 @@ export function RewardCard({ reward, monedasDisponibles, canjeada, onCanjear }: 
       <p className="text-sm text-text-muted">{reward.descripcion}</p>
       <div className="mt-auto flex items-center justify-between pt-2">
         <span className="flex items-center gap-1 text-sm font-semibold">
-          <Icon name="monetization_on" className="text-[16px] text-accent" />
+          <Icon name="monetization_on" className="text-[16px] text-accent-text" />
           {reward.costoMonedas}
         </span>
         <button

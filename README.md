@@ -5,27 +5,32 @@ Capacidades). React + Vite + TypeScript + Tailwind. **Datos mock por
 defecto, cero PII de colaboradores reales, recompensas solo no
 monetarias.**
 
-> **Nota de alcance:** el prototipo arrancó 100% front-end/sin backend
-> (`CLAUDE.md` §7, §9 original). Por decisión explícita del stakeholder se
-> sumó un backend real (Postgres/Supabase) para una tabla de usuarios —
-> ver la nota fechada en `CLAUDE.md` y la sección **Base de datos** abajo.
+> **Nota de alcance:** el prototipo arrancó 100% front-end/sin backend. Por
+> decisión explícita del stakeholder (2026-08-06) se sumó un backend real
+> (Postgres/Supabase) para una tabla de usuarios — ver la sección **Base de
+> datos** abajo.
 > Sigue funcionando sin él: si no hay una BD conectada, todo cae de vuelta
 > al modo local/demo tal como arrancó el prototipo.
 
-Ver `CLAUDE.md` para las instrucciones de build completas y
-`docs/Covalto3_Ruta_Formacion_Documento_Base.md` para el contenido ancla.
+El repositorio solo versiona el código de la app, sus pruebas y las
+migraciones SQL. La documentación de producto y la configuración de agentes
+de IA viven fuera del repo.
 
 ## Requisitos
 
 - Node.js 20+
+- pnpm (versión fijada en `package.json` → `packageManager`). Si no lo tienes
+  instalado, antepone `corepack` a cada comando (`corepack pnpm install`).
 
 ## Desarrollo
 
 ```bash
-npm install
-npm run dev      # http://localhost:5173
-npm run build    # build de producción en dist/
-npm run preview  # sirve el build de producción localmente
+pnpm install
+pnpm dev         # http://localhost:5173
+pnpm test        # pruebas (Vitest)
+pnpm lint        # oxlint
+pnpm build       # typecheck + build de producción en dist/
+pnpm preview     # sirve el build de producción localmente
 ```
 
 ## Stack
@@ -39,7 +44,7 @@ npm run preview  # sirve el build de producción localmente
 - **React Router** para la navegación entre pantallas
 - Estado del "explorador" en Context + `useReducer`, persistido en
   `localStorage` (modo local) y sincronizado con **Supabase** (Postgres)
-  cuando el explorador se identifica con su correo `@covalto.com`
+  cuando el explorador entra con su enlace mágico (`@covalto.com`)
 
 ## Estructura
 
@@ -56,39 +61,48 @@ src/
 
 ## Base de datos (Supabase)
 
-Tabla `usuarios`: nombre, alias (público, se muestra en el Ranking en vez
-del nombre real), correo (debe ser `@covalto.com`, validado en el cliente
-y en la BD), rol, rango, nivel/XP/monedas/racha, módulos completados,
-sellos, recompensas canjeadas, fecha de registro y último acceso. Esquema
-completo en `supabase/migrations/0001_usuarios.sql`.
+Login real con **Supabase Auth** (enlace mágico al correo `@covalto.com`,
+sin contraseñas) y una tabla `usuarios` con nombre, alias (público, se
+muestra en el Ranking en vez del nombre real), correo, rol, rango,
+nivel/XP/monedas/racha, módulos completados, sellos, recompensas canjeadas,
+fecha de registro y último acceso. Cada explorador solo puede leer y
+modificar su propia fila (RLS). Esquema en `supabase/migrations/`
+(`0001_usuarios.sql`, `0002_auth_rls.sql`, en orden).
 
-**Setup (no lo puedo hacer por ti — requiere tu cuenta):**
+**Setup (requiere tu cuenta de Supabase):**
 
-1. Crea un proyecto gratis en [supabase.com](https://supabase.com).
-2. En el dashboard, ve a **SQL Editor**, pega el contenido de
-   `supabase/migrations/0001_usuarios.sql` y ejecútalo.
-3. Ve a **Settings → API** y copia el **Project URL** y la **anon public
-   key** (⚠️ nunca la `service_role`, esa es secreta).
-4. Copia `.env.example` a `.env.local` y pega ambos valores:
-   ```bash
-   cp .env.example .env.local
-   ```
-5. `npm run dev` — ya deberías poder identificarte desde **Cuenta** en el
-   header.
-6. Para producción (Vercel): agrega las mismas dos variables en
-   *Project Settings → Environment Variables* y vuelve a desplegar.
+1. Crea un proyecto en [supabase.com](https://supabase.com).
+2. **SQL Editor:** ejecuta, en orden, `supabase/migrations/0001_usuarios.sql`
+   y `supabase/migrations/0002_auth_rls.sql`.
+3. **Project Settings → API Keys:** copia el **Project URL** y la
+   **publishable key** (o la *anon* legacy). ⚠️ Nunca la *secret* /
+   *service_role*.
+4. `cp .env.example .env.local` y pega ambos valores en
+   `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`.
+5. **Authentication → Sign In / Providers → Email:** activado (enlace
+   mágico).
+6. **Authentication → URL Configuration:**
+   - **Site URL:** el dominio de producción (p. ej.
+     `https://<tu-proyecto>.vercel.app`).
+   - **Redirect URLs:** `http://localhost:5173/**` y
+     `https://<tu-proyecto>.vercel.app/**`.
+7. `pnpm dev` → **Cuenta** → escribe tu correo `@covalto.com` → abre el
+   enlace que llega → completa tu perfil.
+8. **Vercel:** agrega `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` en
+   *Settings → Environment Variables* y vuelve a desplegar.
 
-**⚠️ Limitación de seguridad conocida:** este prototipo no implementa
-Supabase Auth (no estaba en el alcance pedido). El front-end usa la
-`anon key`, que es pública, y las políticas de RLS son permisivas —
-cualquiera con esa clave puede leer/escribir cualquier fila de
-`usuarios`, no solo la suya. Aceptable para una demo interna; **no usar
-así con datos reales de producción** sin agregar autenticación real
-(magic link restringido a `@covalto.com`) — el detalle está comentado en
-la propia migración SQL.
+Notas:
+
+- El correo incluido en Supabase envía pocos enlaces por hora (sirve para
+  probar). Para un piloto con más personas, configura un SMTP propio en
+  *Authentication → Emails → SMTP Settings*.
+- Un enlace se puede pedir cada 60 s y caduca en 1 hora.
+- **Limitación conocida:** cada explorador solo puede tocar su propia fila,
+  pero el cálculo de XP/monedas todavía ocurre en el navegador; moverlo al
+  servidor es un paso pendiente.
 
 ## Decisiones de marca abiertas
 
 El sistema de diseño implementa un **flag de tema** (`covalto` | `espacial`,
-alternable en el header) en vez de cerrar la decisión de marca — ver
-CLAUDE.md §6 y el documento base §2/§12.5.
+alternable en el header) en vez de cerrar la decisión de marca: la decisión
+sigue abierta con los stakeholders.

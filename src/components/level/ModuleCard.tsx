@@ -43,7 +43,7 @@ export function ModuleCard({ modulo, completado, onCompletar }: ModuleCardProps)
         <h3 className="mt-2 font-semibold">{modulo.titulo}</h3>
         <p className="mt-1 text-sm text-text-muted">{modulo.descripcion}</p>
         <div className="mt-2 flex items-center gap-3 text-sm">
-          <span className={`flex items-center gap-1 font-semibold ${esAplica ? 'text-accent' : 'text-text-muted'}`}>
+          <span className={`flex items-center gap-1 font-semibold ${esAplica ? 'text-accent-text' : 'text-text-muted'}`}>
             <Icon name="bolt" className="text-[16px]" />
             {modulo.xp} XP
           </span>

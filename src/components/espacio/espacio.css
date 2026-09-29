@@ -1,0 +1,66 @@
+/*
+ * espacio.css — animaciones y pintura del fondo espacial. Solo transform y
+ * opacity (baratas para la GPU). "Reducir movimiento" las detiene vía
+ * src/styles/movimiento.css.
+ */
+
+/* Una capa de estrellas: elemento de 1 px cuyo box-shadow dibuja el cielo */
+.espacio-capa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  border-radius: 9999px;
+  will-change: transform;
+  animation: espacio-deriva var(--duracion-deriva, 240s) linear infinite;
+}
+
+/* Deriva vertical: las estrellas están repetidas una pantalla más abajo */
+@keyframes espacio-deriva {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100vh);
+  }
+}
+
+/* Titileo suave de una capa completa */
+.espacio-titila {
+  animation: espacio-titileo 7s ease-in-out infinite alternate;
+}
+
+@keyframes espacio-titileo {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Nebulosa: gradientes con los colores del tema y respiración lenta */
+.espacio-nebulosa {
+  background:
+    radial-gradient(40% 35% at 18% 22%, var(--nebulosa-violeta), transparent 70%),
+    radial-gradient(35% 30% at 82% 68%, var(--nebulosa-azul), transparent 70%),
+    radial-gradient(50% 40% at 60% 8%, var(--nebulosa-lila), transparent 70%);
+  animation: espacio-respira 24s ease-in-out infinite alternate;
+}
+
+@keyframes espacio-respira {
+  from {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+/* Viñeta: bordes más oscuros para dar profundidad */
+.espacio-vineta {
+  background: radial-gradient(ellipse at center, transparent 45%, var(--espacio-vineta) 100%);
+}

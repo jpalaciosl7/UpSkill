@@ -1,0 +1,69 @@
+/*
+ * tokens/espacial.css — tema inmersivo de campaña: espacio exterior.
+ * Fondo gris casi negro con matiz morado (profundidad), violeta como
+ * protagonista, ámbar como acento cálido y menta solo para "completado".
+ * Las superficies son "vidrio" translúcido sobre el fondo de estrellas.
+ * Contraste verificado por src/styles/contraste/contraste.test.ts.
+ */
+:root[data-theme='espacial'] {
+  /* Protagonista violeta y acentos */
+  --color-primary: #a78bfa;
+  --color-primary-2: #c4b5fd;
+  --color-primary-3: #ddd6fe;
+  --color-accent: #ffba1f;
+  --color-mint: #84c28b;
+
+  /* Espacio profundo y superficies de vidrio */
+  --color-bg: #0e0c18;
+  --color-surface: rgba(38, 32, 60, 0.78);
+  --color-surface-mint: rgba(167, 139, 250, 0.16); /* chip con tinte violeta */
+  --color-surface-beige: rgba(255, 255, 255, 0.07); /* chip neutro */
+
+  /* Texto */
+  --color-text: #f1eefb;
+  --color-text-muted: #b8b0cf;
+  --color-text-on-primary: #140f24;
+  --color-text-on-dark: #f1eefb;
+  --color-text-on-accent: #1a1206;
+  --color-accent-text: #ffc94d;
+  --color-danger: #ff9a92;
+
+  /* Bordes */
+  --color-border: rgba(167, 139, 250, 0.18);
+  --color-border-strong: #8577b8;
+
+  /* Estados de nodo del mapa */
+  --color-node-locked: #2e2744;
+  --color-node-active: var(--color-accent);
+  --color-node-done: #84c28b;
+
+  /* Medallas del ranking */
+  --color-medalla-oro: #ffba1f;
+  --color-medalla-plata: #cfcfdc;
+  --color-medalla-bronce: #e0935a;
+
+  /* Degradados y brillos de campaña */
+  --gradient-hero: linear-gradient(160deg, #0e0c18 0%, #1a1233 55%, #2a1650 100%);
+  --gradient-space-accent: radial-gradient(circle at 30% 20%, rgba(139, 108, 255, 0.28), transparent 60%);
+  --gradient-titular: linear-gradient(90deg, #7dd3fc 0%, #a78bfa 55%, #d8b4fe 100%);
+  --glow-primario: 0 0 24px rgba(167, 139, 250, 0.45);
+
+  /* Sellos del pasaporte: un color por nivel, como en el concepto */
+  --color-sello-1: #a78bfa;
+  --color-sello-2: #84c28b;
+  --color-sello-3: #ffba1f;
+  --color-sello-4: #7dd3fc;
+  --color-sello-5: #d8b4fe;
+  --color-sello-6: #fcd34d;
+
+  /* Fondo de espacio exterior (src/components/espacio/) */
+  --nebulosa-violeta: rgba(139, 108, 255, 0.3);
+  --nebulosa-azul: rgba(56, 189, 248, 0.14);
+  --nebulosa-lila: rgba(192, 132, 252, 0.18);
+  --espacio-vineta: rgba(0, 0, 0, 0.6);
+
+  /* Forma y sombra */
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 12px 40px rgba(88, 60, 200, 0.35);
+  --radius-card: 1.25rem;
+}

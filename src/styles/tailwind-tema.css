@@ -1,0 +1,48 @@
+/*
+ * tailwind-tema.css — puente entre los tokens CSS de cada tema y las
+ * utilidades de Tailwind v4 (bg-primary, text-danger, border-border-strong,
+ * rounded-card…). `inline` hace que la utilidad lea la variable en tiempo de
+ * ejecución, así cambia sola al alternar el tema.
+ *
+ * Variante `espacial:` — aplica una utilidad solo en el tema espacial
+ * (p. ej. `espacial:lg:flex-row`), sin lógica de tema en los componentes.
+ */
+@custom-variant espacial (&:where([data-theme='espacial'], [data-theme='espacial'] *));
+
+@theme inline {
+  --font-sans: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary: var(--color-primary);
+  --color-primary-2: var(--color-primary-2);
+  --color-primary-3: var(--color-primary-3);
+  --color-accent: var(--color-accent);
+  --color-mint: var(--color-mint);
+
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-surface-mint: var(--color-surface-mint);
+  --color-surface-beige: var(--color-surface-beige);
+
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-on-primary: var(--color-text-on-primary);
+  --color-text-on-dark: var(--color-text-on-dark);
+  --color-text-on-accent: var(--color-text-on-accent);
+  --color-accent-text: var(--color-accent-text);
+  --color-danger: var(--color-danger);
+
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+
+  --color-node-locked: var(--color-node-locked);
+  --color-node-active: var(--color-node-active);
+  --color-node-done: var(--color-node-done);
+
+  --color-medalla-oro: var(--color-medalla-oro);
+  --color-medalla-plata: var(--color-medalla-plata);
+  --color-medalla-bronce: var(--color-medalla-bronce);
+
+  --radius-card: var(--radius-card);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+}
