@@ -32,13 +32,23 @@ dist-ssr
 *.sln
 *.sw?
 
-# Deep Work Plan (DWP) — salida de planes y scratch de agentes
-.dwp/
-tmp/*
-!tmp/.gitkeep
+# ------------------------------------------------------------
+# Solo se versiona el código de la app, sus pruebas, las migraciones SQL y
+# el README raíz. Todo lo demás es local (decisión del owner, 2026-09-28).
+# ------------------------------------------------------------
 
-# Junctions locales .claude/.cursor -> .agents (Windows sin symlinks; ver .agents/README.md).
-# .agents/ es la fuente canónica versionada.
+# Documentación de producto y de agentes (solo local)
+/docs/
+/src/**/README.md
+/supabase/README.md
+
+# Configuración y herramientas de agentes de IA (solo local)
+/AGENTS.md
+/CLAUDE.md
+/CLAUDE.md.bak
+/.agents/
 /.claude
 /.cursor
-.agents/settings.local.json
+/.dwp/
+/tmp/
+/init.md

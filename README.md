@@ -5,16 +5,16 @@ Capacidades). React + Vite + TypeScript + Tailwind. **Datos mock por
 defecto, cero PII de colaboradores reales, recompensas solo no
 monetarias.**
 
-> **Nota de alcance:** el prototipo arrancó 100% front-end/sin backend
-> (`CLAUDE.md` §7, §9 original). Por decisión explícita del stakeholder se
-> sumó un backend real (Postgres/Supabase) para una tabla de usuarios —
-> ver la nota fechada en `CLAUDE.md` y la sección **Base de datos** abajo.
+> **Nota de alcance:** el prototipo arrancó 100% front-end/sin backend. Por
+> decisión explícita del stakeholder (2026-08-06) se sumó un backend real
+> (Postgres/Supabase) para una tabla de usuarios — ver la sección **Base de
+> datos** abajo.
 > Sigue funcionando sin él: si no hay una BD conectada, todo cae de vuelta
 > al modo local/demo tal como arrancó el prototipo.
 
-Ver `AGENTS.md` (índice + reglas para agentes), `docs/PRODUCT_SPEC.md`
-(alcance y decisiones del prototipo) y
-`docs/Covalto3_Ruta_Formacion_Documento_Base.md` para el contenido ancla.
+El repositorio solo versiona el código de la app, sus pruebas y las
+migraciones SQL. La documentación de producto y la configuración de agentes
+de IA viven fuera del repo.
 
 ## Requisitos
 
@@ -32,9 +32,6 @@ pnpm lint        # oxlint
 pnpm build       # typecheck + build de producción en dist/
 pnpm preview     # sirve el build de producción localmente
 ```
-
-Referencia completa de comandos en `docs/DEVELOPMENT_COMMANDS.md`; guía para
-agentes de IA en `AGENTS.md`.
 
 ## Stack
 
@@ -98,5 +95,5 @@ la propia migración SQL.
 ## Decisiones de marca abiertas
 
 El sistema de diseño implementa un **flag de tema** (`covalto` | `espacial`,
-alternable en el header) en vez de cerrar la decisión de marca — ver
-CLAUDE.md §6 y el documento base §2/§12.5.
+alternable en el header) en vez de cerrar la decisión de marca: la decisión
+sigue abierta con los stakeholders.
