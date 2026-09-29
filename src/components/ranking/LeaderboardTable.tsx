@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Icon } from '@/components/ui/Icon'
 import { getRanking } from '@/data/dataService'
 import { useExplorer } from '@/state/explorerContext'
-import { listarRankingUsuarios, obtenerUsuarioPorCorreo, isSupabaseConfigured } from '@/backend/usersService'
+import { listarRankingUsuarios, obtenerUsuarioPorUserId, isSupabaseConfigured } from '@/backend/usersService'
 import type { FilaRankingDB } from '@/backend/types'
 import { nombreFilaLocal, nombreVisibleEnRanking } from './nombreRanking'
 
@@ -24,48 +24,44 @@ interface FilaRanking {
 /**
  * LeaderboardTable — ranking por XP (CLAUDE.md, pantalla 7).
  *
- * Si hay una BD conectada (Supabase) con al menos un explorador real
- * registrado, muestra ese ranking real: solo alias, o "Explorador anónimo"
- * si no tiene — nunca el nombre real (la consulta ni siquiera lo pide).
- * Si no, cae al ranking mock de siempre con el explorador local insertado
- * en su posición.
+ * Con sesión de Supabase Auth y al menos un explorador real, muestra el
+ * ranking real (función `ranking_exploradores`): solo alias, o "Explorador
+ * anónimo" si no tiene — nunca el nombre real (la función ni siquiera lo
+ * devuelve). Sin sesión o sin BD, cae al ranking mock de siempre con el
+ * explorador local insertado en su posición.
  */
 export function LeaderboardTable() {
-  const { estado } = useExplorer()
-  const [usuariosReales, setUsuariosReales] = useState<FilaRankingDB[] | null>(null)
-  const [cargando, setCargando] = useState(isSupabaseConfigured)
-  // Fila propia (se obtiene de la propia fila, por correo) para marcar "(tú)" por id.
-  // Se guarda junto al correo con el que se buscó: si el correo cambia, deja de aplicar.
-  const [filaPropia, setFilaPropia] = useState<{ correo: string; id: string } | null>(null)
-  const idPropio = filaPropia && filaPropia.correo === estado.correo ? filaPropia.id : null
+  const { estado, sesion } = useExplorer()
+  const userId = sesion?.userId ?? null
+  // Ranking real + id de la fila propia (para "(tú)"), guardados junto al
+  // userId con el que se pidieron: si la sesión cambia, dejan de aplicar.
+  const [datos, setDatos] = useState<{ userId: string; filas: FilaRankingDB[]; idPropio: string | null } | null>(null)
+  const datosVigentes = datos && datos.userId === userId ? datos : null
+  const cargando = isSupabaseConfigured && userId !== null && datosVigentes === null
 
   useEffect(() => {
-    const correo = estado.correo
-    if (!correo || !isSupabaseConfigured) return
-    obtenerUsuarioPorCorreo(correo)
-      .then((usuario) => setFilaPropia(usuario ? { correo, id: usuario.id } : null))
-      .catch((error: unknown) => {
-        // eslint-disable-next-line no-console
-        console.error('[ranking] no se pudo identificar la fila propia en Supabase:', error)
+    if (!isSupabaseConfigured || !userId) return
+    let vigente = true
+    Promise.all([listarRankingUsuarios(20), obtenerUsuarioPorUserId(userId)])
+      .then(([filas, propia]) => {
+        if (vigente) setDatos({ userId, filas, idPropio: propia?.id ?? null })
       })
-  }, [estado.correo])
-
-  useEffect(() => {
-    if (!isSupabaseConfigured) return
-    listarRankingUsuarios(20)
-      .then(setUsuariosReales)
       .catch((error: unknown) => {
         // eslint-disable-next-line no-console
         console.error('[ranking] no se pudo cargar el ranking real de Supabase:', error)
-        setUsuariosReales(null)
+        if (vigente) setDatos({ userId, filas: [], idPropio: null })
       })
-      .finally(() => setCargando(false))
-  }, [])
+    return () => {
+      vigente = false
+    }
+  }, [userId])
 
-  const hayDatosReales = usuariosReales !== null && usuariosReales.length > 0
+  const usuariosReales = datosVigentes?.filas ?? []
+  const idPropio = datosVigentes?.idPropio ?? null
+  const hayDatosReales = usuariosReales.length > 0
 
   const filas: FilaRanking[] = hayDatosReales
-    ? usuariosReales!.map((u) => ({
+    ? usuariosReales.map((u) => ({
         id: u.id,
         nombreMostrado: nombreVisibleEnRanking(u.alias),
         xp: u.xp_total,

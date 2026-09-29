@@ -8,7 +8,7 @@
  * las operaciones van por `user_id` y requieren una sesión activa.
  */
 import { isSupabaseConfigured, requerirSupabase } from './supabaseClient'
-import type { ActualizacionUsuarioDB, FilaRankingDB, NuevoPerfilInput, NuevoUsuarioInput, UsuarioDB } from './types'
+import type { ActualizacionUsuarioDB, FilaRankingDB, NuevoPerfilInput, UsuarioDB } from './types'
 
 const TABLA = 'usuarios'
 
@@ -57,62 +57,17 @@ export async function actualizarProgresoPorUserId(userId: string, cambios: Actua
   if (error) throw error
 }
 
-// ---------------------------------------------------------------------------
-// API anterior (identificación por correo, sin Auth). Con la RLS de 0002 ya
-// no funciona contra la BD; se mantiene solo mientras sus llamadores migran
-// (PLAN_login_enlace_magico, tasks 3–5) y se elimina en la task 5.
-// ---------------------------------------------------------------------------
-
-/** @deprecated Usar obtenerUsuarioPorUserId (requiere sesión de Supabase Auth). */
-export async function obtenerUsuarioPorCorreo(correo: string): Promise<UsuarioDB | null> {
-  const cliente = requerirSupabase()
-  const { data, error } = await cliente.from(TABLA).select('*').ilike('correo', correo.trim()).maybeSingle()
-  if (error) throw error
-  return data
-}
-
-/** @deprecated Usar crearPerfil (requiere sesión de Supabase Auth). */
-export async function crearUsuario(datos: NuevoUsuarioInput): Promise<UsuarioDB> {
-  if (!validarCorreoCovalto(datos.correo)) {
-    throw new Error('El correo debe ser del dominio @covalto.com')
-  }
-  const cliente = requerirSupabase()
-  const { data, error } = await cliente
-    .from(TABLA)
-    .insert({
-      nombre: datos.nombre.trim(),
-      alias: datos.alias?.trim() || null,
-      correo: datos.correo.trim().toLowerCase(),
-      rol: datos.rol,
-    })
-    .select('*')
-    .single()
-  if (error) throw error
-  return data
-}
-
-/** @deprecated Usar actualizarProgresoPorUserId (requiere sesión de Supabase Auth). */
-export async function actualizarProgresoUsuario(correo: string, cambios: ActualizacionUsuarioDB): Promise<void> {
-  const cliente = requerirSupabase()
-  const { error } = await cliente.from(TABLA).update(cambios).ilike('correo', correo.trim())
-  if (error) throw error
-}
-
 /**
- * Top N usuarios reales por XP, para el Ranking (Bloque 8). Solo pide las
- * columnas públicas (FilaRankingDB): nunca `nombre` ni `correo` de otros.
- * (La task 5 lo cambia a la función `ranking_exploradores`.)
+ * Top N exploradores por XP, para el Ranking (Bloque 8). Va por la función
+ * `ranking_exploradores` (0002): la RLS solo deja leer la fila propia, y la
+ * función devuelve de TODOS únicamente las columnas públicas (FilaRankingDB),
+ * nunca `nombre` ni `correo`. Requiere sesión (solo `authenticated` la ejecuta).
  */
-export async function listarRankingUsuarios(limite = 10): Promise<FilaRankingDB[]> {
+export async function listarRankingUsuarios(limite = 20): Promise<FilaRankingDB[]> {
   const cliente = requerirSupabase()
-  const { data, error } = await cliente
-    .from(TABLA)
-    .select('id, alias, xp_total, rango')
-    .order('xp_total', { ascending: false })
-    .limit(limite)
-
+  const { data, error } = await cliente.rpc('ranking_exploradores', { limite })
   if (error) throw error
-  return data ?? []
+  return (data ?? []) as FilaRankingDB[]
 }
 
 export { isSupabaseConfigured }

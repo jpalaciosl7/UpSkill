@@ -71,11 +71,3 @@ export interface NuevoPerfilInput {
   alias?: string
   rol: RolExplorador
 }
-
-/** @deprecated Registro por correo sin Auth; se elimina en la task 5 del plan de login. */
-export interface NuevoUsuarioInput {
-  nombre: string
-  alias?: string
-  correo: string
-  rol: RolExplorador
-}
