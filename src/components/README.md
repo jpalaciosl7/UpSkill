@@ -6,7 +6,7 @@ que la usa.
 | Carpeta | Componentes | Pantalla |
 |---|---|---|
 | `layout/` | `AppLayout` (Header + HUD + Outlet), `Header` (navegación, reiniciar progreso, cuenta), `ThemeToggle` | todas menos la landing |
-| `hud/` | `PersistentHUD` — monedas · nivel/rango · barra XP · racha | HUD persistente |
+| `hud/` | `PersistentHUD` — monedas · nivel/rango · barra XP · racha vigente (`rachaVigente` de `@/state/racha`) | HUD persistente |
 | `map/` | `TrajectoryMap`, `PlanetNode` (bloqueado/activo/completado) | Mapa |
 | `level/` | `ModuleCard` (XP, tipo, completar) | Detalle de nivel |
 | `passport/` | `ExplorerPassport`, `MissionStamp` | Pasaporte |

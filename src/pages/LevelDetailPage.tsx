@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { getLevelById, getModulesByLevel } from '@/data/dataService'
 import { useExplorer } from '@/state/explorerContext'
+import { fechaLocalISO } from '@/state/racha'
 import { ModuleCard } from '@/components/level/ModuleCard'
 import { Icon } from '@/components/ui/Icon'
 import { PlaceholderScreen } from '@/components/ui/PlaceholderScreen'
@@ -70,6 +71,7 @@ export function LevelDetailPage() {
       moduloId: modulo.id,
       xp: modulo.xp,
       monedas: modulo.monedas,
+      fecha: fechaLocalISO(new Date()),
       completaNivel: esUltimoDelNivel
         ? {
             nivelId: nivel.id,

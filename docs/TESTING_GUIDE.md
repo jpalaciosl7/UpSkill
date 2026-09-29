@@ -41,6 +41,7 @@ Regla: **prueba co-ubicada** `<archivo>.test.ts` junto al archivo fuente.
 | Fuente tocado | Pruebas a correr |
 |---|---|
 | `src/state/explorerReducer.ts`, `src/state/types.ts` | `src/state/explorerReducer.test.ts` |
+| `src/state/racha.ts` | `src/state/racha.test.ts` + `src/state/explorerReducer.test.ts` (consumidor) |
 | `src/data/*.json`, `src/data/dataService.ts`, `src/data/types.ts` | `src/data/dataService.test.ts` (invariantes de los mocks) |
 | `src/state/types.ts` o `src/data/types.ts` (tipos compartidos) | ambas + `pnpm typecheck` |
 | `src/backend/mapping.ts` | sin prueba aún — agrega `mapping.test.ts` (ida y vuelta estado ↔ fila) |

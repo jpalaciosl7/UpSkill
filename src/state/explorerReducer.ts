@@ -14,6 +14,7 @@
  * del "Nivel 12" numérico del arte de referencia (ese es un contador de
  * gamificación genérico; aquí el nivel = posición en la trayectoria).
  */
+import { calcularRacha } from './racha'
 import type { ExplorerState } from './types'
 
 export const ESTADO_INICIAL: ExplorerState = {
@@ -87,13 +88,17 @@ export type ExplorerAction =
   // local/demo por su fila real; cerrar sesión vuelve al modo local.
   | { type: 'IDENTIFICAR_USUARIO'; estado: ExplorerState }
   | { type: 'CERRAR_SESION' }
-  // Acciones de las que dependen los Bloques 3–5 (datos + mapa + detalle de nivel);
-  // se declaran ya para fijar el contrato del estado, aunque hoy nada las dispara.
   | {
       type: 'COMPLETAR_MODULO'
       moduloId: string
       xp: number
       monedas: number
+      /**
+       * Fecha local 'yyyy-mm-dd' de la actividad (fechaLocalISO(new Date()),
+       * ver racha.ts). La calcula quien despacha para que el reducer siga
+       * siendo puro; con ella se recalcula la racha.
+       */
+      fecha: string
       /**
        * Si este módulo era el último del nivel, se otorga el sello y se
        * desbloquea el siguiente. `siguienteNivelId` lo calcula quien
@@ -139,6 +144,7 @@ export function explorerReducer(estado: ExplorerState, accion: ExplorerAction): 
         monedas: estado.monedas + accion.monedas,
         xpNivelActual,
         modulosCompletados: [...estado.modulosCompletados, accion.moduloId],
+        racha: calcularRacha(estado.racha, accion.fecha),
       }
 
       if (!accion.completaNivel) return base

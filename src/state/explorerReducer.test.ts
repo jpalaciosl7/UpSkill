@@ -9,10 +9,11 @@ import { ESTADO_INICIAL, explorerReducer } from './explorerReducer'
 import type { ExplorerState } from './types'
 
 const base: ExplorerState = { ...ESTADO_INICIAL, modulosCompletados: [], sellosObtenidos: [] }
+const HOY = '2026-09-28'
 
 describe('COMPLETAR_MODULO', () => {
   it('suma XP y monedas y registra el módulo', () => {
-    const estado = explorerReducer(base, { type: 'COMPLETAR_MODULO', moduloId: '2-1', xp: 50, monedas: 10 })
+    const estado = explorerReducer(base, { type: 'COMPLETAR_MODULO', moduloId: '2-1', xp: 50, monedas: 10, fecha: HOY })
     expect(estado.xpTotal).toBe(base.xpTotal + 50)
     expect(estado.xpNivelActual).toBe(base.xpNivelActual + 50)
     expect(estado.monedas).toBe(base.monedas + 10)
@@ -20,9 +21,27 @@ describe('COMPLETAR_MODULO', () => {
   })
 
   it('no cuenta dos veces el mismo módulo', () => {
-    const accion = { type: 'COMPLETAR_MODULO', moduloId: '2-1', xp: 50, monedas: 10 } as const
+    const accion = { type: 'COMPLETAR_MODULO', moduloId: '2-1', xp: 50, monedas: 10, fecha: HOY } as const
     const unaVez = explorerReducer(base, accion)
     expect(explorerReducer(unaVez, accion)).toBe(unaVez)
+  })
+
+  it('recalcula la racha con la fecha de la actividad', () => {
+    const ayer = { ...base, racha: { dias: 2, ultimaActividad: '2026-09-27' } }
+    const estado = explorerReducer(ayer, { type: 'COMPLETAR_MODULO', moduloId: '2-1', xp: 50, monedas: 10, fecha: HOY })
+    expect(estado.racha).toEqual({ dias: 3, ultimaActividad: HOY })
+  })
+
+  it('un segundo módulo el mismo día no cambia la racha', () => {
+    const primero = explorerReducer(base, { type: 'COMPLETAR_MODULO', moduloId: '2-1', xp: 50, monedas: 10, fecha: HOY })
+    const segundo = explorerReducer(primero, { type: 'COMPLETAR_MODULO', moduloId: '2-2', xp: 50, monedas: 10, fecha: HOY })
+    expect(segundo.racha).toEqual(primero.racha)
+  })
+
+  it('un módulo repetido no toca la racha aunque sea otro día', () => {
+    const hecho = { ...base, modulosCompletados: ['2-1'], racha: { dias: 2, ultimaActividad: '2026-09-20' } }
+    const estado = explorerReducer(hecho, { type: 'COMPLETAR_MODULO', moduloId: '2-1', xp: 50, monedas: 10, fecha: HOY })
+    expect(estado).toBe(hecho)
   })
 
   it('al cerrar el nivel otorga el sello y avanza al siguiente con la barra en cero', () => {
@@ -33,6 +52,7 @@ describe('COMPLETAR_MODULO', () => {
         moduloId: '2-4',
         xp: 100,
         monedas: 25,
+        fecha: HOY,
         completaNivel: { nivelId: 2, siguienteNivelId: 3, siguienteXpObjetivo: 550 },
       },
     )
@@ -49,6 +69,7 @@ describe('COMPLETAR_MODULO', () => {
       moduloId: '6-4',
       xp: 180,
       monedas: 40,
+      fecha: HOY,
       completaNivel: { nivelId: 6, siguienteNivelId: 6, siguienteXpObjetivo: 980 },
     })
     expect(estado.sellosObtenidos).toContain(6)

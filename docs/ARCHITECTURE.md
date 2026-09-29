@@ -44,7 +44,9 @@ Reglas de dependencia (se respetan hoy y hay que mantenerlas):
   en la UI.
 - **Quien despacha calcula el contexto**: p. ej. `LevelDetailPage` decide si el
   módulo es el último del nivel y pasa `completaNivel` con el siguiente nivel
-  (`min(id + 1, 6)`) y su `xpObjetivo`.
+  (`min(id + 1, 6)`) y su `xpObjetivo`, y pasa la `fecha` local de hoy con la
+  que el reducer recalcula la racha (`src/state/racha.ts`). El reducer nunca
+  llama a `new Date()`.
 - **Estado inicial de demo** (`ESTADO_INICIAL`): explorador ficticio "a media
   ruta" (nivel 2, 820 XP, 450 monedas) para que la demo se vea poblada.
 

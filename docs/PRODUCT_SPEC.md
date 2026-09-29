@@ -87,12 +87,14 @@ Champions** son el mismo embudo.
 
 **Estado:** un "explorador" en memoria + `localStorage` (modo local), o
 sincronizado con Supabase si se identificó. Completar un módulo otorga
-XP/monedas, desbloquea niveles, otorga sellos y actualiza la posición en el
-ranking. Existe un botón **"reiniciar progreso"**.
+XP/monedas, desbloquea niveles, otorga sellos, actualiza la racha y la
+posición en el ranking. Existe un botón **"reiniciar progreso"**.
 
-> Brecha conocida: la **racha** hoy se muestra pero no se recalcula al
-> completar módulos (el valor es el del estado inicial/BD). Pendiente si el
-> stakeholder lo prioriza.
+**Racha (días):** solo completar un módulo cuenta como actividad (métrica
+dual: abrir la app no suma). Primer módulo del día → +1 si la última actividad
+fue ayer, o vuelve a 1 si fue antes; más módulos el mismo día no la cambian.
+Si pasa más de un día sin actividad, el HUD y el Pasaporte la muestran en 0
+hasta la siguiente. Los días se cuentan en la fecha local del navegador.
 
 ## 4 · Los 6 niveles (contenido canónico)
 

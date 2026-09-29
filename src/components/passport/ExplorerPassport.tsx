@@ -5,6 +5,7 @@ import { useExplorer } from '@/state/explorerContext'
 import { useTheme } from '@/theme/ThemeContext'
 import { astronautaMini, pasaporteLibro } from '@/assets/espacial'
 import { ID_EXPLORADOR_MOCK } from '@/state/types'
+import { fechaLocalISO, rachaVigente } from '@/state/racha'
 
 const ETIQUETA_ROL: Record<string, string> = {
   tecnico: 'Rol técnico',
@@ -96,7 +97,7 @@ export function ExplorerPassport() {
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         <StatTile icono="monetization_on" etiqueta="Monedas Covalto" valor={monedas.toLocaleString('es-MX')} />
         <StatTile icono="bolt" etiqueta="XP total" valor={xpTotal.toLocaleString('es-MX')} />
-        <StatTile icono="local_fire_department" etiqueta="Racha" valor={`${racha.dias} días`} />
+        <StatTile icono="local_fire_department" etiqueta="Racha" valor={`${rachaVigente(racha, fechaLocalISO(new Date()))} días`} />
         <StatTile icono="military_tech" etiqueta="Rango" valor={rango} />
       </div>
     </div>

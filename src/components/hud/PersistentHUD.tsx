@@ -1,9 +1,11 @@
 import { useExplorer } from '@/state/explorerContext'
 import { Icon } from '@/components/ui/Icon'
+import { fechaLocalISO, rachaVigente } from '@/state/racha'
 
 /**
  * PersistentHUD — monedas · nivel/rango · progreso de XP · racha.
  * Visible en todas las pantallas post-landing (CLAUDE.md §3, pantalla 6).
+ * La racha se muestra vigente: 0 si la última actividad fue antes de ayer.
  */
 export function PersistentHUD() {
   const {
@@ -41,7 +43,7 @@ export function PersistentHUD() {
       {/* Racha */}
       <div className="flex items-center gap-1.5 rounded-full bg-surface px-3 py-1.5 shadow-card">
         <Icon name="local_fire_department" className="text-[18px] text-accent" />
-        <span className="font-semibold">{racha.dias}</span>
+        <span className="font-semibold">{rachaVigente(racha, fechaLocalISO(new Date()))}</span>
         <span className="text-text-muted">días</span>
       </div>
     </div>
