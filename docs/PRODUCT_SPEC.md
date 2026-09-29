@@ -143,6 +143,12 @@ de contraste WCAG que Covalto (prueba automática en `src/styles/contraste/`).
 Paleta en `src/styles/README.md`. Del concepto visual se excluye todo lo
 monetario ("Gana dinero / premios en efectivo").
 
+Inmersión del tema espacial: la app flota en el espacio exterior (estrellas en
+capas con parallax y nebulosa), el mapa es una órbita 3D giratoria, entrar a un
+nivel es un "viaje" al planeta y, como en el concepto, los titulares llevan
+degradado cian → violeta, la barra de XP brilla en violeta y cada sello del
+pasaporte tiene el color de su nivel.
+
 > ⚠️ **Decisión de marca abierta.** El theming usa **tokens CSS** y un **flag de
 > tema** (`covalto` | `espacial`) alternable. Default: `covalto` con acentos
 > espaciales. Así el prototipo no cierra la decisión.

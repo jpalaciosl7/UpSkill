@@ -38,4 +38,11 @@ export const PARES_TEMA: ParContraste[] = [
   { uso: 'medalla oro sobre tarjeta', frente: 'medalla-oro', fondo: 'surface', minimo: MINIMO_GRAFICO },
   { uso: 'medalla plata sobre tarjeta', frente: 'medalla-plata', fondo: 'surface', minimo: MINIMO_GRAFICO },
   { uso: 'medalla bronce sobre tarjeta', frente: 'medalla-bronce', fondo: 'surface', minimo: MINIMO_GRAFICO },
+  // Ícono oscuro sobre el sello de cada nivel del pasaporte
+  ...[1, 2, 3, 4, 5, 6].map((nivel) => ({
+    uso: `ícono sobre sello del nivel ${nivel}`,
+    frente: 'text-on-accent',
+    fondo: `sello-${nivel}`,
+    minimo: MINIMO_GRAFICO,
+  })),
 ]

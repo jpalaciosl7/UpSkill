@@ -9,6 +9,7 @@ Un archivo por responsabilidad; `index.css` solo ordena los `@import`.
 | `tokens/` | Valores de color, sombra y forma de cada tema (`covalto.css`, `espacial.css`) |
 | `tailwind-tema.css` | `@theme inline`: conecta cada token con su utilidad de Tailwind |
 | `base.css` | `html`/`body`: fondo y texto del tema, transición al alternar |
+| `efectos.css` | Acabados de campaña solo en Espacial: `.titular-degradado`, `.barra-xp` |
 | `movimiento.css` | `prefers-reduced-motion`: sin animaciones ni transiciones decorativas |
 | `contraste/` | Contrato de accesibilidad de los temas y su prueba automática |
 
@@ -36,6 +37,7 @@ Un archivo por responsabilidad; `index.css` solo ordena los `@import`.
 | Completado | verde `#3d8b55` | menta `#84c28b` |
 | Titulares | color sólido | degradado `--gradient-titular` (cian → violeta) |
 | Brillo | ninguno | `--glow-primario` (halo violeta) |
+| Sellos del pasaporte (`--color-sello-1…6`) | todos ámbar | un color por nivel (violeta, menta, ámbar, cian, lila, dorado) |
 
 **Prohibido:** colores fijos en componentes (`text-red-600`, `bg-black/…`,
 hex). Si falta un color, agrega un token en **ambos** archivos de `tokens/`,

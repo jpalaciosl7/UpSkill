@@ -41,6 +41,14 @@
   --color-medalla-plata: #6b7280;
   --color-medalla-bronce: #9a4f1f;
 
+  /* Sellos del pasaporte: en Covalto todos en ámbar de marca */
+  --color-sello-1: var(--color-accent);
+  --color-sello-2: var(--color-accent);
+  --color-sello-3: var(--color-accent);
+  --color-sello-4: var(--color-accent);
+  --color-sello-5: var(--color-accent);
+  --color-sello-6: var(--color-accent);
+
   /* Degradados del hero */
   --gradient-hero: linear-gradient(135deg, #062323 0%, #134c48 55%, #0c3634 100%);
   --gradient-space-accent: radial-gradient(circle at 30% 20%, rgba(132, 194, 139, 0.25), transparent 60%);

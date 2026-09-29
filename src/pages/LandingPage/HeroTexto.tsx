@@ -10,7 +10,7 @@ export function HeroTexto() {
   return (
     <div className="espacial:lg:flex-1">
       <p className="text-sm font-medium uppercase tracking-widest opacity-80">{NOMBRE_EXPERIENCIA}</p>
-      <h1 className="mt-4 text-4xl font-bold sm:text-5xl">{TAGLINE_CAMPANA}</h1>
+      <h1 className="titular-degradado mt-4 text-4xl font-bold sm:text-5xl">{TAGLINE_CAMPANA}</h1>
       <p className="mt-4 text-lg opacity-90">{TAGLINE_JOURNEY}</p>
       <p className="mt-6 max-w-lg text-sm opacity-75">
         Embárcate en una ruta gamificada de capacitación en Inteligencia Artificial y lleva tu conocimiento a otro

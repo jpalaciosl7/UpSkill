@@ -21,7 +21,7 @@ export function MapPage() {
     <div className="space-y-8">
       <div className="rounded-card border border-[var(--color-border)] bg-surface p-6 shadow-card">
         <p className="text-sm text-text-muted">Tu trayectoria · rango {rango}</p>
-        <h1 className="mt-1 text-2xl font-bold">
+        <h1 className="titular-degradado mt-1 text-2xl font-bold">
           {nivelActivo ? `Estás en el Nivel ${nivelActivo.id} · ${nivelActivo.nombre}` : 'Trayectoria completa'}
         </h1>
         <p className="mt-1 text-sm text-text-muted">

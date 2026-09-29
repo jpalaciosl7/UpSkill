@@ -3,7 +3,8 @@
  * archivo tiene una responsabilidad (ver src/styles/README.md).
  *
  * El orden importa: Tailwind primero, luego fuentes, tokens de cada tema,
- * el puente tokens → utilidades de Tailwind, estilos base y movimiento.
+ * el puente tokens → utilidades de Tailwind, estilos base, efectos de
+ * campaña y movimiento (al final, para poder anular animaciones).
  */
 @import 'tailwindcss';
 @import './fuentes.css';
@@ -11,4 +12,5 @@
 @import './tokens/espacial.css';
 @import './tailwind-tema.css';
 @import './base.css';
+@import './efectos.css';
 @import './movimiento.css';

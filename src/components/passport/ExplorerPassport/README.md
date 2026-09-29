@@ -13,7 +13,9 @@ astronauta.
 | `EstadisticasExplorador.tsx` | Monedas, XP total, racha vigente y rango |
 | `index.ts` | API pública (`ExplorerPassport`) |
 
-`MissionStamp` vive un nivel arriba (`../MissionStamp.tsx`). El id del
+`MissionStamp` vive un nivel arriba (`../MissionStamp.tsx`); el color del sello
+obtenido sale del token `--color-sello-N` (ámbar en Covalto, un color por nivel
+en Espacial). El id del
 explorador es un `// PLACEHOLDER` ficticio (`ID_EXPLORADOR_MOCK`).
 
 **Pruebas:** sin pruebas de UI; la racha vigente se prueba en

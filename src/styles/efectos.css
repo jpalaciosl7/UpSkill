@@ -1,0 +1,19 @@
+/*
+ * efectos.css — acabados de campaña del concepto visual que solo existen en
+ * el tema espacial: titulares con degradado y barra de XP con el mismo
+ * degradado. En Covalto estas clases no cambian nada (marca sobria).
+ */
+
+/* Titular con degradado cian → violeta (el color base queda de respaldo) */
+:root[data-theme='espacial'] .titular-degradado {
+  background-image: var(--gradient-titular);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Barra de progreso de XP con el degradado de campaña */
+:root[data-theme='espacial'] .barra-xp {
+  background-image: var(--gradient-titular);
+  box-shadow: var(--glow-primario);
+}

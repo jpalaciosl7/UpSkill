@@ -48,6 +48,14 @@
   --gradient-titular: linear-gradient(90deg, #7dd3fc 0%, #a78bfa 55%, #d8b4fe 100%);
   --glow-primario: 0 0 24px rgba(167, 139, 250, 0.45);
 
+  /* Sellos del pasaporte: un color por nivel, como en el concepto */
+  --color-sello-1: #a78bfa;
+  --color-sello-2: #84c28b;
+  --color-sello-3: #ffba1f;
+  --color-sello-4: #7dd3fc;
+  --color-sello-5: #d8b4fe;
+  --color-sello-6: #fcd34d;
+
   /* Fondo de espacio exterior (src/components/espacio/) */
   --nebulosa-violeta: rgba(139, 108, 255, 0.3);
   --nebulosa-azul: rgba(56, 189, 248, 0.14);

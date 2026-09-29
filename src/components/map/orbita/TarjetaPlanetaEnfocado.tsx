@@ -29,11 +29,11 @@ export function TarjetaPlanetaEnfocado({ nivel, estado, completados, totalModulo
       <p className="text-xs font-semibold uppercase tracking-wide text-text-muted">
         Nivel {nivel.id} · {nivel.aaa} · {TEXTO_ESTADO[estado]}
       </p>
-      <h2 className="mt-1 text-2xl font-bold">{nivel.nombre}</h2>
+      <h2 className="titular-degradado mt-1 text-2xl font-bold">{nivel.nombre}</h2>
       <p className="mt-1 text-sm text-text-muted">{nivel.senalDominio}</p>
       <div className="mt-3 flex items-center gap-2 text-xs text-text-muted">
         <div className="h-2 flex-1 overflow-hidden rounded-full bg-border">
-          <div className="h-full rounded-full bg-primary" style={{ width: `${avance}%` }} />
+          <div className="barra-xp h-full rounded-full bg-primary" style={{ width: `${avance}%` }} />
         </div>
         {completados}/{totalModulos} módulos
       </div>

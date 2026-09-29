@@ -34,7 +34,7 @@ export function CabeceraNivel({ nivel, conSello, completados, totalModulos }: Ca
             </span>
           )}
         </div>
-        <h1 className="mt-2 text-2xl font-bold espacial:text-3xl">{nivel.nombre}</h1>
+        <h1 className="titular-degradado mt-2 text-2xl font-bold espacial:text-3xl">{nivel.nombre}</h1>
         <p className="mt-1 text-sm text-text-muted">{nivel.senalDominio}</p>
         <p className="mt-3 text-sm font-medium text-text-muted">
           {completados}/{totalModulos} módulos completados
