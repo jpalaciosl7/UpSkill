@@ -4,7 +4,7 @@
  * que /src/state no necesite saber nada sobre la forma de la tabla SQL.
  */
 import type { ExplorerState } from '@/state/types'
-import type { UsuarioDB } from './types'
+import type { ActualizacionUsuarioDB, UsuarioDB } from './types'
 
 export function usuarioDbAEstado(usuario: UsuarioDB): ExplorerState {
   return {
@@ -32,7 +32,7 @@ export function usuarioDbAEstado(usuario: UsuarioDB): ExplorerState {
 /** Traduce el estado del front-end a las columnas que Supabase debe persistir (sin id/correo/fecha_registro) */
 export function estadoAActualizacionUsuario(
   estado: ExplorerState,
-): Partial<Omit<UsuarioDB, 'id' | 'correo' | 'fecha_registro'>> {
+): ActualizacionUsuarioDB {
   return {
     nombre: estado.nombre,
     alias: estado.alias,
