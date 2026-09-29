@@ -33,22 +33,25 @@ dist-ssr
 *.sw?
 
 # ------------------------------------------------------------
-# Solo se versiona el código de la app, sus pruebas, las migraciones SQL y
-# el README raíz. Todo lo demás es local (decisión del owner, 2026-09-28).
+# Se versiona el código, sus pruebas, las migraciones SQL y TODA la
+# documentación (docs/, README de cada carpeta, AGENTS.md, .agents/).
+# Queda solo en local lo que es de una máquina o de una sesión
+# (decisión del owner, 2026-09-29).
 # ------------------------------------------------------------
 
-# Documentación de producto y de agentes (solo local)
-/docs/
-/src/**/README.md
-/supabase/README.md
-
-# Configuración y herramientas de agentes de IA (solo local)
-/AGENTS.md
-/CLAUDE.md
+# Respaldo del CLAUDE.md original (su contenido vive en docs/PRODUCT_SPEC.md)
 /CLAUDE.md.bak
-/.agents/
+
+# Junctions locales .claude/.cursor -> .agents (Windows sin symlinks)
 /.claude
 /.cursor
+.agents/settings.local.json
+
+# Skills de terceros (Supabase agent-skills): solo locales, nunca al repo
+.agents/skills/supabase/
+.agents/skills/supabase-postgres-best-practices/
+
+# Planes de trabajo (DWP), scratch y herramientas locales de agentes
 /.dwp/
 /tmp/
 /init.md
