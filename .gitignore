@@ -51,6 +51,9 @@ dist-ssr
 .agents/skills/supabase/
 .agents/skills/supabase-postgres-best-practices/
 
+# Configuración local del MCP de Supabase (ligada al proyecto de pruebas)
+/.mcp.json
+
 # Planes de trabajo (DWP), scratch y herramientas locales de agentes
 /.dwp/
 /tmp/
