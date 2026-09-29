@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { Icon } from '@/components/ui/Icon'
 import { getRanking } from '@/data/dataService'
 import { useExplorer } from '@/state/explorerContext'
-import { listarRankingUsuarios, isSupabaseConfigured } from '@/backend/usersService'
-import type { UsuarioDB } from '@/backend/types'
+import { listarRankingUsuarios, obtenerUsuarioPorCorreo, isSupabaseConfigured } from '@/backend/usersService'
+import type { FilaRankingDB } from '@/backend/types'
+import { nombreFilaLocal, nombreVisibleEnRanking } from './nombreRanking'
 
 const MEDALLA: Record<number, string> = { 1: '#FFBA1F', 2: '#C0C0C0', 3: '#CD7F32' }
 
@@ -24,14 +25,30 @@ interface FilaRanking {
  * LeaderboardTable — ranking por XP (CLAUDE.md, pantalla 7).
  *
  * Si hay una BD conectada (Supabase) con al menos un explorador real
- * registrado, muestra ese ranking real (por alias, no por nombre — cero
- * PII expuesta públicamente). Si no, cae al ranking mock de siempre con
- * el explorador local insertado en su posición.
+ * registrado, muestra ese ranking real: solo alias, o "Explorador anónimo"
+ * si no tiene — nunca el nombre real (la consulta ni siquiera lo pide).
+ * Si no, cae al ranking mock de siempre con el explorador local insertado
+ * en su posición.
  */
 export function LeaderboardTable() {
   const { estado } = useExplorer()
-  const [usuariosReales, setUsuariosReales] = useState<UsuarioDB[] | null>(null)
+  const [usuariosReales, setUsuariosReales] = useState<FilaRankingDB[] | null>(null)
   const [cargando, setCargando] = useState(isSupabaseConfigured)
+  // Fila propia (se obtiene de la propia fila, por correo) para marcar "(tú)" por id.
+  // Se guarda junto al correo con el que se buscó: si el correo cambia, deja de aplicar.
+  const [filaPropia, setFilaPropia] = useState<{ correo: string; id: string } | null>(null)
+  const idPropio = filaPropia && filaPropia.correo === estado.correo ? filaPropia.id : null
+
+  useEffect(() => {
+    const correo = estado.correo
+    if (!correo || !isSupabaseConfigured) return
+    obtenerUsuarioPorCorreo(correo)
+      .then((usuario) => setFilaPropia(usuario ? { correo, id: usuario.id } : null))
+      .catch((error: unknown) => {
+        // eslint-disable-next-line no-console
+        console.error('[ranking] no se pudo identificar la fila propia en Supabase:', error)
+      })
+  }, [estado.correo])
 
   useEffect(() => {
     if (!isSupabaseConfigured) return
@@ -50,16 +67,16 @@ export function LeaderboardTable() {
   const filas: FilaRanking[] = hayDatosReales
     ? usuariosReales!.map((u) => ({
         id: u.id,
-        nombreMostrado: u.alias ?? u.nombre,
+        nombreMostrado: nombreVisibleEnRanking(u.alias),
         xp: u.xp_total,
         rango: u.rango,
-        esUsuarioActual: estado.correo !== null && u.correo.toLowerCase() === estado.correo.toLowerCase(),
+        esUsuarioActual: idPropio !== null && u.id === idPropio,
       }))
     : [
         ...getRanking().map((r) => ({ id: r.id, nombreMostrado: r.nombre, xp: r.xp, rango: r.rango, esUsuarioActual: false })),
         {
           id: 'yo',
-          nombreMostrado: estado.alias ?? estado.nombre,
+          nombreMostrado: nombreFilaLocal(estado),
           xp: estado.xpTotal,
           rango: estado.rango,
           esUsuarioActual: true,

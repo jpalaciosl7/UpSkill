@@ -8,7 +8,7 @@ modo local.
 |---|---|
 | `supabaseClient.ts` | `supabase` (o `null`), `isSupabaseConfigured` — único import de `@supabase/supabase-js` |
 | `usersService.ts` | `validarCorreoCovalto`, `obtenerUsuarioPorCorreo`, `crearUsuario`, `actualizarProgresoUsuario`, `listarRankingUsuarios`, `isSupabaseConfigured` |
-| `types.ts` | `UsuarioDB` (fila snake_case), `NuevoUsuarioInput` |
+| `types.ts` | `UsuarioDB` (fila snake_case), `FilaRankingDB` (columnas públicas del Ranking: `id, alias, xp_total, rango`), `NuevoUsuarioInput` |
 | `mapping.ts` | `usuarioDbAEstado`, `estadoAActualizacionUsuario` (fila ↔ `ExplorerState`) |
 
 **Reglas:**
@@ -17,6 +17,9 @@ modo local.
   los atrapa con `console.error('[dominio] …', error)` sin romper la UI.
 - `types.ts` debe coincidir con `supabase/migrations/*.sql`; si cambias una
   columna, cambia los tres (SQL, `types.ts`, `mapping.ts`).
+- Consultas que devuelven filas de **otros** usuarios piden solo columnas
+  públicas (hoy: `listarRankingUsuarios` → `FilaRankingDB`); nunca `select('*')`
+  para listados.
 - Solo la **anon key** (`VITE_SUPABASE_ANON_KEY`). Nunca la `service_role`.
   Limitaciones de seguridad en [`docs/SECURITY.md`](../../docs/SECURITY.md).
 

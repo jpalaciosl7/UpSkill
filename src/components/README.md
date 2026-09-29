@@ -11,7 +11,7 @@ que la usa.
 | `level/` | `ModuleCard` (XP, tipo, completar) | Detalle de nivel |
 | `passport/` | `ExplorerPassport`, `MissionStamp` | Pasaporte |
 | `evaluation/` | `PlacementQuiz` (D1–D5 → rango y nivel sugerido) | Autoevaluación |
-| `ranking/` | `LeaderboardTable` (real si hay Supabase, si no mock + explorador local) | Ranking |
+| `ranking/` | `LeaderboardTable` (real si hay Supabase, si no mock + explorador local); `nombreRanking.ts` decide el nombre visible (alias o "Explorador anónimo", nunca el nombre real) | Ranking |
 | `community/` | `CommunityTeaser` | Comunidad |
 | `rewards/` | `RewardCard` | Recompensas |
 | `auth/` | `IdentityForm` (identificarse con correo `@covalto.com`) | Cuenta |

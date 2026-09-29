@@ -8,6 +8,7 @@ import {
   isSupabaseConfigured,
 } from '@/backend/usersService'
 import { usuarioDbAEstado } from '@/backend/mapping'
+import { ETIQUETA_SIN_ALIAS } from '@/components/ranking/nombreRanking'
 
 /**
  * IdentityForm — registro/inicio "sin contraseña" por correo @covalto.com.
@@ -96,6 +97,9 @@ export function IdentityForm() {
             placeholder="Opcional — p. ej. NovaExplorador"
             className="w-full rounded-full border border-[var(--color-border)] bg-bg px-4 py-2 text-sm outline-none focus:border-primary"
           />
+          <span className="mt-1 block text-xs text-text-muted">
+            Tu nombre real nunca aparece en el Ranking: sin alias, aparecerás como “{ETIQUETA_SIN_ALIAS}”.
+          </span>
         </label>
 
         <label className="block text-sm">

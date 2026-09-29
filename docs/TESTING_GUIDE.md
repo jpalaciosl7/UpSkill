@@ -45,7 +45,8 @@ Regla: **prueba co-ubicada** `<archivo>.test.ts` junto al archivo fuente.
 | `src/data/*.json`, `src/data/dataService.ts`, `src/data/types.ts` | `src/data/dataService.test.ts` (invariantes de los mocks) |
 | `src/state/types.ts` o `src/data/types.ts` (tipos compartidos) | ambas + `pnpm typecheck` |
 | `src/backend/mapping.ts` | sin prueba aún — agrega `mapping.test.ts` (ida y vuelta estado ↔ fila) |
-| `src/components/**`, `src/pages/**` | sin pruebas de UI: `pnpm typecheck` + `pnpm lint` + revisión manual en `pnpm dev` |
+| `src/components/ranking/nombreRanking.ts` | `src/components/ranking/nombreRanking.test.ts` |
+| `src/components/**`, `src/pages/**` (resto) | sin pruebas de UI: `pnpm typecheck` + `pnpm lint` + revisión manual en `pnpm dev` |
 | `src/styles/index.css`, `src/theme/**`, `src/assets/**` | revisión visual en **ambos temas** |
 | `supabase/migrations/*.sql` | sin prueba automática: revisar consistencia con `src/backend/types.ts` y `mapping.ts` |
 

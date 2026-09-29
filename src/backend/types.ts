@@ -28,6 +28,13 @@ export interface UsuarioDB {
   ultimo_acceso: string
 }
 
+/**
+ * Columnas mínimas que el Ranking necesita de CADA usuario. A propósito sin
+ * `nombre` ni `correo`: el nombre real de otros no debe llegar al navegador
+ * por el Ranking (el alias es el nombre público).
+ */
+export type FilaRankingDB = Pick<UsuarioDB, 'id' | 'alias' | 'xp_total' | 'rango'>
+
 /** Datos requeridos para registrar a un explorador nuevo */
 export interface NuevoUsuarioInput {
   nombre: string

@@ -33,9 +33,15 @@ sus guardrails se tratan como obligatorios.
   evidentemente ficticios.
 - Datos reales (nombre, correo, progreso) de quien se identifica viven solo en
   la tabla `usuarios` de Supabase (excepción aprobada el 2026-08-06).
-- El Ranking muestra el **alias**, no el nombre real. Ojo: si un usuario no
-  define alias, `LeaderboardTable` cae a mostrar su `nombre` — hallazgo
-  conocido, pendiente de decisión del stakeholder.
+- El Ranking muestra solo el **alias**; un usuario real sin alias aparece como
+  "Explorador anónimo" (`src/components/ranking/nombreRanking.ts`), nunca con
+  su nombre real. La consulta del Ranking (`listarRankingUsuarios`) pide solo
+  `id, alias, xp_total, rango`: el nombre y el correo de otros usuarios no
+  llegan al navegador por esa vía. La fila propia se marca por `id`, obtenido
+  de la propia fila del usuario.
+- Esto **no** sustituye a la RLS: con la anon key y la RLS permisiva actual,
+  alguien que consulte la API directo puede seguir leyendo todas las columnas
+  (ver "Modelo de autenticación").
 - localStorage (`explorador-ia-state`) guarda una copia del estado, incluido
   el correo, en el navegador del usuario. "Cerrar sesión" lo borra.
 

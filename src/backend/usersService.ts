@@ -4,7 +4,7 @@
  * app llama a estas funciones, nunca a `supabase` directamente.
  */
 import { supabase, isSupabaseConfigured } from './supabaseClient'
-import type { NuevoUsuarioInput, UsuarioDB } from './types'
+import type { FilaRankingDB, NuevoUsuarioInput, UsuarioDB } from './types'
 
 const TABLA = 'usuarios'
 
@@ -67,12 +67,15 @@ export async function actualizarProgresoUsuario(
   if (error) throw error
 }
 
-/** Top N usuarios reales por XP, para el Ranking (Bloque 8) */
-export async function listarRankingUsuarios(limite = 10): Promise<UsuarioDB[]> {
+/**
+ * Top N usuarios reales por XP, para el Ranking (Bloque 8). Solo pide las
+ * columnas públicas (FilaRankingDB): nunca `nombre` ni `correo` de otros.
+ */
+export async function listarRankingUsuarios(limite = 10): Promise<FilaRankingDB[]> {
   const cliente = requerirSupabase()
   const { data, error } = await cliente
     .from(TABLA)
-    .select('*')
+    .select('id, alias, xp_total, rango')
     .order('xp_total', { ascending: false })
     .limit(limite)
 
