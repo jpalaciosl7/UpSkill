@@ -1,7 +1,7 @@
 import { Icon } from '@/components/ui/Icon'
 import { ICONO_POR_NIVEL } from '@/data/levelIcons'
 import { PLANETA_POR_NIVEL } from '@/assets/espacial'
-import { useTheme } from '@/theme/ThemeContext'
+import { useTheme } from '@/theme'
 import type { Level } from '@/data/types'
 
 export type EstadoNodo = 'bloqueado' | 'activo' | 'completado'

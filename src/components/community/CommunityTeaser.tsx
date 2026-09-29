@@ -1,5 +1,5 @@
 import { Icon } from '@/components/ui/Icon'
-import { useTheme } from '@/theme/ThemeContext'
+import { useTheme } from '@/theme'
 
 interface CommunityTeaserProps {
   icono: string

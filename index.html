@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Explorador IA · Ruta de Formación IA de Covalto³ (prototipo)" />
     <title>Explorador IA · Covalto³</title>
+    <script>
+      // Aplica el tema guardado ANTES del primer render para que no parpadee
+      // el tema por defecto. Misma clave y valores que src/theme/tipos.ts.
+      try {
+        var tema = localStorage.getItem('explorador-ia-tema')
+        if (tema === 'covalto' || tema === 'espacial') {
+          document.documentElement.dataset.theme = tema
+          document.documentElement.style.colorScheme = tema === 'espacial' ? 'dark' : 'light'
+        }
+      } catch (e) {
+        // localStorage bloqueado: se usa el tema por defecto
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

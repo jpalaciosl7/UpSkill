@@ -1,4 +1,4 @@
-import { useTheme } from '@/theme/ThemeContext'
+import { useTheme } from '@/theme'
 import { Icon } from '@/components/ui/Icon'
 
 /**

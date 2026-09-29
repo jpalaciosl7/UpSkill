@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { NOMBRE_EXPERIENCIA, NOMBRE_PROGRAMA, TAGLINE_CAMPANA, TAGLINE_JOURNEY } from '@/config/branding'
 import { Icon } from '@/components/ui/Icon'
 import { ThemeToggle } from '@/components/layout/ThemeToggle'
-import { useTheme } from '@/theme/ThemeContext'
+import { useTheme } from '@/theme'
 import { astronautaHero } from '@/assets/espacial'
 
 /**

@@ -88,11 +88,16 @@ Reglas de dependencia (se respetan hoy y hay que mantenerlas):
 
 ## Theming
 
-Tokens CSS en `src/styles/index.css` bajo `:root[data-theme='covalto']` y
-`:root[data-theme='espacial']`, expuestos a Tailwind v4 con `@theme inline`
-(clases como `bg-surface`, `text-primary`, `rounded-card`, `shadow-card`). El
-tema se persiste en localStorage (`explorador-ia-tema`). El arte del tema
-espacial está en `src/assets/espacial/` (webp).
+Dos temas alternables con el botón: `covalto` (empresarial, por defecto) y
+`espacial` (inmersivo). Lógica en `src/theme/` con un archivo por
+responsabilidad (tipos, almacenamiento, aplicar al DOM, contexto, provider,
+hook; ver su README), importada solo desde `@/theme`. El tema se persiste en
+localStorage (`explorador-ia-tema`) y un script en línea de `index.html` lo
+aplica **antes** del primer render (sin parpadeo). Tokens CSS bajo
+`:root[data-theme='covalto']` y `:root[data-theme='espacial']`, expuestos a
+Tailwind v4 con `@theme inline` (clases como `bg-surface`, `text-primary`,
+`rounded-card`, `shadow-card`). El arte del tema espacial está en
+`src/assets/espacial/` (webp).
 
 ## Base de datos
 
