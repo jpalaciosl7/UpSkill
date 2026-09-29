@@ -7,7 +7,7 @@ la fluidez de la demo, no en escala.
 
 | Asset | Tamaño | Nota |
 |---|---|---|
-| JS principal (`index-*.js`) | ~333 kB (~113 kB gzip) | React + router + supabase-js + app |
+| JS principal (`index-*.js`) | ~560 kB (~171 kB gzip) | React + router + supabase-js + app. Era ~333 kB en `85ea419`; el salto ocurrió en la rama del login (Supabase Auth) — **hallazgo pendiente de investigar** (2026-09-29). Línea base del plan del tema espacial: 559.7 kB |
 | CSS (`index-*.css`) | ~39 kB (~7.5 kB gzip) | Tailwind v4 |
 | `material-symbols-outlined-*.woff2` | **~3.96 MB** | fuente variable completa de íconos — el asset más pesado |
 | Noto Sans (4 pesos × subsets) | ~45–85 kB por archivo | solo se descargan los subsets que usa la página |

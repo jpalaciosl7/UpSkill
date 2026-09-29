@@ -148,10 +148,17 @@ un cambio coherente que compila y pasa las pruebas.
 ## Estilos
 
 - Tailwind v4 con utilidades mapeadas a tokens (`bg-surface`, `text-primary`,
-  `text-text-muted`, `rounded-card`, `shadow-card`, `bg-accent/15`).
-- **Nunca** hex sueltos en componentes: si hace falta un color nuevo, agrégalo
-  como token en `src/styles/index.css` para **ambos** temas. (Excepción
-  existente: colores de medalla en `LeaderboardTable`.)
+  `text-text-muted`, `rounded-card`, `shadow-card`, `bg-accent/15`). Tabla de
+  qué token usar para qué en [`src/styles/README.md`](../src/styles/README.md)
+  (ámbar como texto → `text-accent-text`; error → `text-danger`; borde de
+  campo → `border-border-strong`).
+- **Nunca** colores fijos en componentes (hex, `text-red-600`, `bg-black/…`):
+  si hace falta un color nuevo, agrégalo como token en
+  `src/styles/tokens/covalto.css` **y** `espacial.css`, su utilidad en
+  `src/styles/tailwind-tema.css` y, si es texto o borde, su par en
+  `src/styles/contraste/paresTema.ts` (la prueba de contraste lo vigila).
+- Campos y errores de formulario con `CampoTexto` y `MensajeError`
+  (`src/components/ui/`).
 - Íconos con `<Icon name="…" />` (`src/components/ui/Icon.tsx`, Material
   Symbols Outlined auto-hospedado).
 - Copy de marca desde `src/config/branding.ts`, nunca el string "Explorador IA"

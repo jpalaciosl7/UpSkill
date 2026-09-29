@@ -11,11 +11,11 @@ que la usa.
 | `level/` | `ModuleCard` (XP, tipo, completar) | Detalle de nivel |
 | `passport/` | `ExplorerPassport`, `MissionStamp` | Pasaporte |
 | `evaluation/` | `PlacementQuiz` (D1–D5 → rango y nivel sugerido) | Autoevaluación |
-| `ranking/` | `LeaderboardTable` (real vía `ranking_exploradores` si hay sesión, si no mock + explorador local; "(tú)" por id de la fila propia); `nombreRanking.ts` decide el nombre visible (alias o "Explorador anónimo", nunca el nombre real) | Ranking |
+| `ranking/` | `LeaderboardTable/` (carpeta: orquestador, `useRankingReal`, `construirFilas`, fila y medalla — ver su README; real vía `ranking_exploradores` si hay sesión, si no mock + explorador local); `nombreRanking.ts` decide el nombre visible (alias o "Explorador anónimo", nunca el nombre real) | Ranking |
 | `community/` | `CommunityTeaser` | Comunidad |
 | `rewards/` | `RewardCard` | Recompensas |
-| `auth/` | `LoginEnlaceMagico` (pedir enlace + "revisa tu correo", reenvío tras 60 s — `reenvio.ts`), `PerfilInicialForm` (nombre, alias, rol en el primer ingreso), `AvisoSinBaseDatos` | Cuenta |
-| `ui/` | `Icon` (Material Symbols), `PlaceholderScreen` | genéricos |
+| `auth/` | `LoginEnlaceMagico/` (carpeta: pedir enlace + "revisa tu correo", reenvío tras 60 s), `PerfilInicialForm/` (carpeta: nombre, alias, rol en el primer ingreso), `AvisoSinBaseDatos` — cada carpeta con su README | Cuenta |
+| `ui/` | `Icon`, `PlaceholderScreen`, `CampoTexto`, `MensajeError` (ver su README) | genéricos |
 
 **Reglas:**
 

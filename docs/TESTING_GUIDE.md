@@ -48,7 +48,10 @@ Regla: **prueba co-ubicada** `<archivo>.test.ts` junto al archivo fuente.
 | `src/backend/mapping.ts`, `src/backend/types.ts` | `src/backend/mapping.test.ts` (si cambia `COLUMNAS_ACTUALIZABLES`, debe cambiar también el `GRANT UPDATE` de la migración) |
 | `src/backend/authService.ts` | `src/backend/authService.test.ts` (doble de `supabaseClient`) |
 | `supabase/migrations/*.sql` (RLS, grants) | `node tmp/supabase-tools/sql.mjs --file tmp/supabase-tools/rls_checks.sql` contra la BD de pruebas (local, no versionado) |
-| `src/components/auth/reenvio.ts` | `src/components/auth/reenvio.test.ts` |
+| `src/components/auth/LoginEnlaceMagico/reenvio.ts` | `src/components/auth/LoginEnlaceMagico/reenvio.test.ts` |
+| `src/styles/tokens/*.css`, `src/styles/contraste/*` | `src/styles/contraste/contraste.test.ts` (contraste WCAG de ambos temas) |
+| `src/theme/tipos.ts`, `src/theme/almacenamiento.ts` | `src/theme/almacenamiento.test.ts` |
+| `src/components/ranking/LeaderboardTable/construirFilas.ts` | `src/components/ranking/LeaderboardTable/construirFilas.test.ts` |
 | `src/components/ranking/nombreRanking.ts` | `src/components/ranking/nombreRanking.test.ts` |
 | `src/components/**`, `src/pages/**` (resto) | sin pruebas de UI: `pnpm typecheck` + `pnpm lint` + revisión manual en `pnpm dev` |
 | `src/styles/index.css`, `src/theme/**`, `src/assets/**` | revisión visual en **ambos temas** |

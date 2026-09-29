@@ -1,0 +1,51 @@
+/*
+ * tokens/espacial.css — tema inmersivo de campaña (espacio exterior).
+ * Paleta provisional: la Task 3 del plan del tema espacial la reemplaza por
+ * la gris-morada. Contraste verificado por src/styles/contraste.test.ts.
+ */
+:root[data-theme='espacial'] {
+  /* Paleta de marca reinterpretada sobre fondo oscuro */
+  --color-primary: #84c28b;
+  --color-primary-2: #a7d6ad;
+  --color-primary-3: #c7e9cb;
+  --color-accent: #ffba1f;
+  --color-mint: #84c28b;
+
+  /* Superficies */
+  --color-bg: #0b0e2a;
+  --color-surface: #161a3f;
+  --color-surface-mint: #1b2147;
+  --color-surface-beige: #1b2147;
+
+  /* Texto */
+  --color-text: #f2f1fb;
+  --color-text-muted: #a3a6c8;
+  --color-text-on-primary: #0b0e2a;
+  --color-text-on-dark: #f2f1fb;
+  --color-text-on-accent: #062323;
+  --color-accent-text: #ffba1f;
+  --color-danger: #ff8f87;
+
+  /* Bordes */
+  --color-border: #2b3168;
+  --color-border-strong: #6f76b8;
+
+  /* Estados de nodo del mapa de trayectoria */
+  --color-node-locked: #2b3168;
+  --color-node-active: var(--color-accent);
+  --color-node-done: #84c28b;
+
+  /* Medallas del ranking */
+  --color-medalla-oro: #ffba1f;
+  --color-medalla-plata: #c0c0c0;
+  --color-medalla-bronce: #cd7f32;
+
+  /* Degradados del hero */
+  --gradient-hero: linear-gradient(135deg, #0b0e2a 0%, #1b1147 55%, #2a1b5e 100%);
+  --gradient-space-accent: radial-gradient(circle at 30% 20%, rgba(132, 194, 139, 0.2), transparent 60%);
+
+  /* Forma y sombra */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-card-hover: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --radius-card: 1.25rem;
+}
