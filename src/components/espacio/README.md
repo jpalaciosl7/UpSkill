@@ -12,6 +12,7 @@ imágenes ni librerías: CSS generado.
 | `sombrasEstrellas.ts` | Lógica pura: estrellas → `box-shadow`, repetidas para una deriva sin cortes |
 | `espacio.css` | Animaciones (deriva, titileo, respiración) y viñeta; solo transform/opacity |
 | `index.ts` | API pública (`FondoEspacial`) |
+| `viaje/` | Viaje entre planetas en el curso: planeta protagonista, anterior/siguiente, transición (ver su README) |
 
 **Profundidad:** la capa lejana tiene 140 estrellas pequeñas que tardan 360 s
 en cruzar la pantalla; la cercana, 30 más grandes en 130 s. La diferencia de

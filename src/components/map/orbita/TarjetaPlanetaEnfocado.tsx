@@ -40,7 +40,7 @@ export function TarjetaPlanetaEnfocado({ nivel, estado, completados, totalModulo
       <button
         type="button"
         disabled={!enterable}
-        onClick={() => navigate(`/nivel/${nivel.id}`)}
+        onClick={() => navigate(`/nivel/${nivel.id}`, { viewTransition: true })}
         className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-text-on-primary shadow-card transition hover:shadow-card-hover disabled:cursor-not-allowed disabled:opacity-50"
       >
         <Icon name={enterable ? 'rocket_launch' : 'lock'} className="text-[18px]" />

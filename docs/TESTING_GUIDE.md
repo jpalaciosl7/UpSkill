@@ -55,6 +55,7 @@ Regla: **prueba co-ubicada** `<archivo>.test.ts` junto al archivo fuente.
 | `src/components/map/estadoNodo.ts` | `src/components/map/estadoNodo.test.ts` |
 | `src/components/map/orbita/geometriaOrbita.ts`, `estadoOrbita.ts` | `src/components/map/orbita/geometriaOrbita.test.ts` (geometría + navegación) |
 | `src/components/espacio/generarEstrellas.ts`, `sombrasEstrellas.ts` | `src/components/espacio/generarEstrellas.test.ts` |
+| `src/components/espacio/viaje/navegacionNiveles.ts` | `src/components/espacio/viaje/navegacionNiveles.test.ts` |
 | `src/components/ranking/nombreRanking.ts` | `src/components/ranking/nombreRanking.test.ts` |
 | `src/components/**`, `src/pages/**` (resto) | sin pruebas de UI: `pnpm typecheck` + `pnpm lint` + revisión manual en `pnpm dev` |
 | `src/styles/index.css`, `src/theme/**`, `src/assets/**` | revisión visual en **ambos temas** |

@@ -77,7 +77,7 @@ Champions** son el mismo embudo.
 | 1 | **Landing / Hero** | "Mi viaje. Mi misión. Mi futuro con IA." + CTA "Despega ahora" | `/` |
 | 2 | **Autoevaluación (placement)** | Cuestionario corto D1–D5 que asigna un **rango de entrada** (Novato → Explorador → Avanzado → Experto) | `/evaluacion` |
 | 3 | **Mapa de trayectoria** | Los **6 niveles** como planetas; estado bloqueado/activo/completado; posición actual. Covalto: fila lineal. **Espacial: órbita 3D que gira** para traer al frente el planeta elegido (botones, flechas, deslizar o clic) | `/mapa` |
-| 4 | **Detalle de nivel** | Módulos del nivel, XP por módulo, acción "completar" | `/nivel/:levelId` |
+| 4 | **Detalle de nivel** | Módulos del nivel, XP por módulo, acción "completar". **Espacial:** el planeta del nivel es protagonista, entrar desde la órbita es un "viaje" (acercamiento) y se puede ir al planeta anterior/siguiente | `/nivel/:levelId` |
 | 5 | **Pasaporte del Explorador** | Perfil + **sellos de misión** (uno por nivel), monedas, barra XP, racha, nivel/rango | `/pasaporte` |
 | 6 | **HUD persistente** | Monedas · Nivel · progreso XP · racha (como las tarjetas del arte) | en todo `AppLayout` |
 | 7 | **Ranking de Exploradores** | Leaderboard por XP (mock; real si hay Supabase) | `/ranking` |

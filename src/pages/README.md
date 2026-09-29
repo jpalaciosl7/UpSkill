@@ -8,7 +8,7 @@ contexto de una acción antes de despacharla.
 |---|---|---|
 | `LandingPage/` | `/` | hero inmersivo, sin Header/HUD; carpeta con encabezado, texto, acciones e ilustración (ver su README) |
 | `MapPage` | `/mapa` | mapa de trayectoria |
-| `LevelDetailPage` | `/nivel/:levelId` | decide si el módulo cierra el nivel y arma `completaNivel` (`NIVEL_MAXIMO = 6`) |
+| `LevelDetailPage/` | `/nivel/:levelId` | carpeta: orquestador, curso, cabecera (planeta protagonista en Espacial), aviso de sello y `useCompletarModulo` (arma `completaNivel`, `NIVEL_MAXIMO = 6`) — ver su README |
 | `PassportPage` | `/pasaporte` | envuelve `ExplorerPassport` |
 | `EvaluationPage` | `/evaluacion` | envuelve `PlacementQuiz` |
 | `RankingPage` | `/ranking` | envuelve `LeaderboardTable` |

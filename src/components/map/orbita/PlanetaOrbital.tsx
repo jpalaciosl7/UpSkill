@@ -40,7 +40,9 @@ export function PlanetaOrbital({ nivel, estado, angulo, cercania, enfocado, alSe
     >
       <span className="relative block">
         <span
-          className={`orbita-cuerpo block h-24 w-24 rounded-full bg-cover bg-center ${estado === 'bloqueado' ? 'grayscale' : ''}`}
+          className={`orbita-cuerpo block h-24 w-24 rounded-full bg-cover bg-center ${estado === 'bloqueado' ? 'grayscale' : ''} ${
+            enfocado ? 'viaje-planeta' : '' /* comparte transición con el planeta protagonista del nivel */
+          }`}
           style={{ backgroundImage: `url(${PLANETA_POR_NIVEL[nivel.id]})` }}
         />
         {estado === 'bloqueado' && (
