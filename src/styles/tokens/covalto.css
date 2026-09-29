@@ -44,6 +44,9 @@
   /* Degradados del hero */
   --gradient-hero: linear-gradient(135deg, #062323 0%, #134c48 55%, #0c3634 100%);
   --gradient-space-accent: radial-gradient(circle at 30% 20%, rgba(132, 194, 139, 0.25), transparent 60%);
+  /* Efectos de campaña: en Covalto son neutros (titular en color sólido, sin brillo) */
+  --gradient-titular: linear-gradient(90deg, currentColor, currentColor);
+  --glow-primario: none;
 
   /* Forma y sombra */
   --shadow-card: 0 4px 16px rgba(6, 35, 35, 0.08);

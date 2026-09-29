@@ -25,6 +25,7 @@ export const PARES_TEMA: ParContraste[] = [
   { uso: 'texto secundario sobre fondo', frente: 'text-muted', fondo: 'bg', minimo: MINIMO_TEXTO },
   { uso: 'texto secundario sobre chip', frente: 'text-muted', fondo: 'surface-beige', minimo: MINIMO_TEXTO },
   { uso: 'primario como texto sobre tarjeta', frente: 'primary', fondo: 'surface', minimo: MINIMO_TEXTO },
+  { uso: 'primario sobre chip de acento', frente: 'primary', fondo: 'surface-mint', minimo: MINIMO_TEXTO },
   { uso: 'texto sobre botón primario', frente: 'text-on-primary', fondo: 'primary', minimo: MINIMO_TEXTO },
   { uso: 'texto sobre ámbar', frente: 'text-on-accent', fondo: 'accent', minimo: MINIMO_TEXTO },
   { uso: 'ámbar legible sobre tarjeta', frente: 'accent-text', fondo: 'surface', minimo: MINIMO_TEXTO },

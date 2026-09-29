@@ -135,6 +135,14 @@ valen más que los `aprende` (verificado por `src/data/dataService.test.ts`).
 de exploración espacial (astronauta, planetas, pasaporte). Se trata como **capa
 ilustrativa/temática** sobre el sistema Covalto, no como reemplazo de la marca.
 
+**Tema espacial (inmersivo):** fondo gris casi negro con matiz morado para dar
+profundidad, **violeta como protagonista** (botones, barra de XP, titulares),
+ámbar como acento cálido (monedas, nivel activo) y menta solo para
+"completado"; tarjetas de vidrio translúcido sobre el espacio. Mismos mínimos
+de contraste WCAG que Covalto (prueba automática en `src/styles/contraste/`).
+Paleta en `src/styles/README.md`. Del concepto visual se excluye todo lo
+monetario ("Gana dinero / premios en efectivo").
+
 > ⚠️ **Decisión de marca abierta.** El theming usa **tokens CSS** y un **flag de
 > tema** (`covalto` | `espacial`) alternable. Default: `covalto` con acentos
 > espaciales. Así el prototipo no cierra la decisión.

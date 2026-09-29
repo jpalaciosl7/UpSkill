@@ -1,51 +1,55 @@
 /*
- * tokens/espacial.css — tema inmersivo de campaña (espacio exterior).
- * Paleta provisional: la Task 3 del plan del tema espacial la reemplaza por
- * la gris-morada. Contraste verificado por src/styles/contraste.test.ts.
+ * tokens/espacial.css — tema inmersivo de campaña: espacio exterior.
+ * Fondo gris casi negro con matiz morado (profundidad), violeta como
+ * protagonista, ámbar como acento cálido y menta solo para "completado".
+ * Las superficies son "vidrio" translúcido sobre el fondo de estrellas.
+ * Contraste verificado por src/styles/contraste/contraste.test.ts.
  */
 :root[data-theme='espacial'] {
-  /* Paleta de marca reinterpretada sobre fondo oscuro */
-  --color-primary: #84c28b;
-  --color-primary-2: #a7d6ad;
-  --color-primary-3: #c7e9cb;
+  /* Protagonista violeta y acentos */
+  --color-primary: #a78bfa;
+  --color-primary-2: #c4b5fd;
+  --color-primary-3: #ddd6fe;
   --color-accent: #ffba1f;
   --color-mint: #84c28b;
 
-  /* Superficies */
-  --color-bg: #0b0e2a;
-  --color-surface: #161a3f;
-  --color-surface-mint: #1b2147;
-  --color-surface-beige: #1b2147;
+  /* Espacio profundo y superficies de vidrio */
+  --color-bg: #0e0c18;
+  --color-surface: rgba(38, 32, 60, 0.78);
+  --color-surface-mint: rgba(167, 139, 250, 0.16); /* chip con tinte violeta */
+  --color-surface-beige: rgba(255, 255, 255, 0.07); /* chip neutro */
 
   /* Texto */
-  --color-text: #f2f1fb;
-  --color-text-muted: #a3a6c8;
-  --color-text-on-primary: #0b0e2a;
-  --color-text-on-dark: #f2f1fb;
-  --color-text-on-accent: #062323;
-  --color-accent-text: #ffba1f;
-  --color-danger: #ff8f87;
+  --color-text: #f1eefb;
+  --color-text-muted: #b8b0cf;
+  --color-text-on-primary: #140f24;
+  --color-text-on-dark: #f1eefb;
+  --color-text-on-accent: #1a1206;
+  --color-accent-text: #ffc94d;
+  --color-danger: #ff9a92;
 
   /* Bordes */
-  --color-border: #2b3168;
-  --color-border-strong: #6f76b8;
+  --color-border: rgba(167, 139, 250, 0.18);
+  --color-border-strong: #8577b8;
 
-  /* Estados de nodo del mapa de trayectoria */
-  --color-node-locked: #2b3168;
+  /* Estados de nodo del mapa */
+  --color-node-locked: #2e2744;
   --color-node-active: var(--color-accent);
   --color-node-done: #84c28b;
 
   /* Medallas del ranking */
   --color-medalla-oro: #ffba1f;
-  --color-medalla-plata: #c0c0c0;
-  --color-medalla-bronce: #cd7f32;
+  --color-medalla-plata: #cfcfdc;
+  --color-medalla-bronce: #e0935a;
 
-  /* Degradados del hero */
-  --gradient-hero: linear-gradient(135deg, #0b0e2a 0%, #1b1147 55%, #2a1b5e 100%);
-  --gradient-space-accent: radial-gradient(circle at 30% 20%, rgba(132, 194, 139, 0.2), transparent 60%);
+  /* Degradados y brillos de campaña */
+  --gradient-hero: linear-gradient(160deg, #0e0c18 0%, #1a1233 55%, #2a1650 100%);
+  --gradient-space-accent: radial-gradient(circle at 30% 20%, rgba(139, 108, 255, 0.28), transparent 60%);
+  --gradient-titular: linear-gradient(90deg, #7dd3fc 0%, #a78bfa 55%, #d8b4fe 100%);
+  --glow-primario: 0 0 24px rgba(167, 139, 250, 0.45);
 
   /* Forma y sombra */
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
-  --shadow-card-hover: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 12px 40px rgba(88, 60, 200, 0.35);
   --radius-card: 1.25rem;
 }

@@ -25,6 +25,18 @@ Un archivo por responsabilidad; `index.css` solo ordena los `@import`.
 | Borde que delimita (inputs, nodos) | `border-border-strong` | ≥ 3:1 |
 | Medallas del ranking | `text-medalla-oro/plata/bronce` | |
 
+## Paleta de cada tema
+
+| Rol | Covalto (empresarial) | Espacial (inmersivo) |
+|---|---|---|
+| Fondo | off-white `#f9f8f7` | gris casi negro con matiz morado `#0e0c18` |
+| Tarjeta | blanco | vidrio `rgba(38, 32, 60, 0.78)` |
+| Primario | verde `#062323` | **violeta** `#a78bfa` |
+| Acento cálido | ámbar `#ffba1f` | ámbar `#ffba1f` |
+| Completado | verde `#3d8b55` | menta `#84c28b` |
+| Titulares | color sólido | degradado `--gradient-titular` (cian → violeta) |
+| Brillo | ninguno | `--glow-primario` (halo violeta) |
+
 **Prohibido:** colores fijos en componentes (`text-red-600`, `bg-black/…`,
 hex). Si falta un color, agrega un token en **ambos** archivos de `tokens/`,
 su utilidad en `tailwind-tema.css` y, si se usa como texto o borde, su par en
