@@ -157,6 +157,10 @@ un cambio coherente que compila y pasa las pruebas.
   `src/styles/tokens/covalto.css` **y** `espacial.css`, su utilidad en
   `src/styles/tailwind-tema.css` y, si es texto o borde, su par en
   `src/styles/contraste/paresTema.ts` (la prueba de contraste lo vigila).
+- **Variar por tema** solo de tres formas, en este orden: un token distinto
+  en cada archivo de `tokens/`; la variante `espacial:` de Tailwind; o
+  `<SoloEnTema tema="…" enOtroTema={…}>` (`src/theme/`) cuando cambia el
+  componente entero. Nunca `tema === '…'` repartido en componentes.
 - Campos y errores de formulario con `CampoTexto` y `MensajeError`
   (`src/components/ui/`).
 - Íconos con `<Icon name="…" />` (`src/components/ui/Icon.tsx`, Material

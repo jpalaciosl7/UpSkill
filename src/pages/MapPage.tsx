@@ -1,3 +1,8 @@
+/**
+ * MapPage.tsx — pantalla 3 (mapa de trayectoria, `/mapa`): encabezado con el
+ * nivel actual, el mapa del tema (órbita 3D en Espacial, fila lineal en
+ * Covalto) y la leyenda de estados.
+ */
 import { TrajectoryMap } from '@/components/map/lineal'
 import { OrbitaPlanetas } from '@/components/map/orbita'
 import { SoloEnTema } from '@/theme'
@@ -5,12 +10,14 @@ import { Icon } from '@/components/ui/Icon'
 import { getLevels } from '@/data/dataService'
 import { useExplorer } from '@/state/explorerContext'
 
+/** Leyenda de estados de nivel (colores de los tokens node-*) */
 const LEYENDA: { estado: string; icono: string; clase: string; texto: string }[] = [
-  { estado: 'completado', icono: 'check', clase: 'bg-[var(--color-node-done)]', texto: 'Completado' },
-  { estado: 'activo', icono: 'my_location', clase: 'bg-[var(--color-node-active)]', texto: 'En curso' },
-  { estado: 'bloqueado', icono: 'lock', clase: 'bg-[var(--color-node-locked)]', texto: 'Bloqueado' },
+  { estado: 'completado', icono: 'check', clase: 'bg-node-done', texto: 'Completado' },
+  { estado: 'activo', icono: 'my_location', clase: 'bg-node-active', texto: 'En curso' },
+  { estado: 'bloqueado', icono: 'lock', clase: 'bg-node-locked', texto: 'Bloqueado' },
 ]
 
+/** Mapa de trayectoria con el mapa que corresponde al tema activo */
 export function MapPage() {
   const {
     estado: { nivelActual, rango },

@@ -14,8 +14,8 @@ el PATH, antepone `corepack` (`corepack pnpm test`).
 
 | Qué | Comando | Evidencia de una corrida correcta |
 |---|---|---|
-| Pruebas | `pnpm test` (`vitest run`) | `Test Files 4 passed (4)`, `Tests 35 passed (35)` (2026-09-28) |
-| Lint | `pnpm lint` (`oxlint`) | 0 errores, 4 warnings conocidos (`only-export-components`) |
+| Pruebas | `pnpm test` (`vitest run`) | `Test Files 15 passed (15)`, `Tests 132 passed (132)` (2026-09-29) |
+| Lint | `pnpm lint` (`oxlint`) | 0 errores; warnings `max-lines` solo en archivos pendientes del refactor SRP |
 | Typecheck | `pnpm typecheck` (`tsc -b`) | sin salida, exit 0 |
 | Build | `pnpm build` (`tsc -b && vite build`) | `✓ built in …` |
 
@@ -23,10 +23,10 @@ el PATH, antepone `corepack` (`corepack pnpm test`).
 
 | Patrón | Ejemplo en este repo | Evidencia verificada |
 |---|---|---|
-| Por carpeta | `pnpm exec vitest run src/state` | 2 archivos, **23 pruebas** ejecutadas |
+| Por carpeta | `pnpm exec vitest run src/state` | 3 archivos, **30 pruebas** ejecutadas |
 | Por archivo | `pnpm exec vitest run src/data/dataService.test.ts` | 1 archivo, 7 pruebas |
-| Por nombre | `pnpm exec vitest run -t "CANJEAR_RECOMPENSA"` | **2 pasan, 33 omitidas** (solo ese `describe`) |
-| Relacionadas con un fuente | `pnpm exec vitest related --run src/state/explorerReducer.ts` | selecciona `explorerReducer.test.ts`: **13 pruebas** |
+| Por nombre | `pnpm exec vitest run -t "CANJEAR_RECOMPENSA"` | **2 pasan, 130 omitidas** (solo ese `describe`) |
+| Relacionadas con un fuente | `pnpm exec vitest related --run src/state/explorerReducer.ts` | selecciona 3 archivos que lo importan: **23 pruebas** |
 | Lint acotado | `pnpm exec oxlint src/state` | lint solo de esa carpeta (3 warnings conocidos) |
 
 - **Typecheck acotado no existe** en la práctica: `tsc -b` es de proyecto

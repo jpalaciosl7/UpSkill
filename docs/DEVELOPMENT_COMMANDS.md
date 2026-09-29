@@ -38,8 +38,9 @@ Requisito: Node.js 20+ (verificado con Node 24.21).
 | Build | full | `pnpm build` (`tsc -b && vite build` → `dist/`) |
 | Todo | full | `pnpm lint && pnpm test && pnpm build` |
 
-Estado verificado el 2026-09-28: lint 0 errores / 4 warnings conocidos;
-35 pruebas en verde (4 archivos); build OK.
+Estado verificado el 2026-09-29: lint 0 errores (warnings `max-lines` en
+archivos pendientes del refactor SRP); 132 pruebas en verde (15 archivos);
+build OK.
 
 ## Base de datos
 
